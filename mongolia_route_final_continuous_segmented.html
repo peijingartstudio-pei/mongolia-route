@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a0eda20b48c745af19416aa212bded99 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position:fixed;top:20px;right:20px;z-index:9999;
+background:rgba(255,255,255,0.96);
+padding:18px 20px;border-radius:18px;
+border:2px solid rgba(0,0,0,0.15);
+box-shadow:0 4px 14px rgba(0,0,0,0.25);
+font-family:Arial;
+max-height:82%;overflow:auto;width:440px;">
+<div style="font-size:18px;font-weight:950;margin-bottom:8px;">
+Mongolia Expedition Overview
+</div>
+
+    <div style="margin-top:14px;font-size:16px;font-weight:900;color:#d94f2b;">
+    GOBI SEGMENT
+    </div>
+    
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 1 · 2026-07-07</div>
+        <div style="color:#d94f2b;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">City tour: National Museum · Gandan Monastery · Zaisan Monument · Welcome dinner</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 2 · 2026-07-08</div>
+        <div style="color:#d94f2b;font-weight:700;">Terelj National Park</div>
+        <div style="font-size:13px;opacity:0.85;">Chinggis Statue · Turtle Rock · Ariyabal Temple hike · Stargazing (yurt)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 3 · 2026-07-09</div>
+        <div style="color:#d94f2b;font-weight:700;">Baga Gazriin Chuluu</div>
+        <div style="font-size:13px;opacity:0.85;">Rock formations hike · Photography · Nomad camp · Stargazing</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 4 · 2026-07-10</div>
+        <div style="color:#d94f2b;font-weight:700;">Yol Valley</div>
+        <div style="font-size:13px;opacity:0.85;">Tsagaan Suvarga stop · Scenic drive · Evening rest (yurt)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 5 · 2026-07-11</div>
+        <div style="color:#d94f2b;font-weight:700;">Gobi Sand Dunes</div>
+        <div style="font-size:13px;opacity:0.85;">Hike · Short horse ride · Camel riding · Sunset photography</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 6 · 2026-07-12</div>
+        <div style="color:#d94f2b;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Return drive · Hotel stay</div>
+        </div>
+        
+    <div style="margin-top:14px;font-size:16px;font-weight:900;color:#6a3fbf;">
+    NAADAM SEGMENT
+    </div>
+    
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 7 · 2026-07-13</div>
+        <div style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Naadam Festival: horse racing · wrestling · cultural events</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 8 · 2026-07-14</div>
+        <div style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Rest day · Shopping · Preparation</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 9 · 2026-07-15</div>
+        <div style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Archery experience · Bogd Khan Museum · Evening concert</div>
+        </div>
+        
+    <div style="margin-top:14px;font-size:16px;font-weight:900;color:#1f7a4c;">
+    NORTH SEGMENT
+    </div>
+    
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 10 · 2026-07-16</div>
+        <div style="color:#1f7a4c;font-weight:700;">Mini Gobi (Khustai / Elsen Tasarkhai)</div>
+        <div style="font-size:13px;opacity:0.85;">Przewalski’s horses · Dunes · Camel · Stargazing (tent)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 11 · 2026-07-17</div>
+        <div style="color:#1f7a4c;font-weight:700;">Orkhon Valley</div>
+        <div style="font-size:13px;opacity:0.85;">Nomad family stay · Hiking · Photography</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 12 · 2026-07-18</div>
+        <div style="color:#1f7a4c;font-weight:700;">Orkhon Valley</div>
+        <div style="font-size:13px;opacity:0.85;">Nomad life experience · Extensive horse riding</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 13 · 2026-07-19</div>
+        <div style="color:#1f7a4c;font-weight:700;">Great White Lake (Khorgo)</div>
+        <div style="font-size:13px;opacity:0.85;">Khorgo Volcano · Camping · Cooking outdoors</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 14 · 2026-07-20</div>
+        <div style="color:#1f7a4c;font-weight:700;">Shine‑Ider</div>
+        <div style="font-size:13px;opacity:0.85;">Scenic mountain/forest drive · Camping</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 15 · 2026-07-21</div>
+        <div style="color:#1f7a4c;font-weight:700;">Lake Khövsgöl</div>
+        <div style="font-size:13px;opacity:0.85;">Supplies stop · Guesthouse stay</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 16 · 2026-07-22</div>
+        <div style="color:#1f7a4c;font-weight:700;">Reindeer Tribe Area</div>
+        <div style="font-size:13px;opacity:0.85;">Boat ride · Reindeer tribe visit</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 17 · 2026-07-23</div>
+        <div style="color:#1f7a4c;font-weight:700;">Bulgan Province</div>
+        <div style="font-size:13px;opacity:0.85;">Nomad family · Horse riding · Airag tasting</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 18 · 2026-07-24</div>
+        <div style="color:#1f7a4c;font-weight:700;">Bulgan Province</div>
+        <div style="font-size:13px;opacity:0.85;">Rest · Nomad life · Archery attempt</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 19 · 2026-07-25</div>
+        <div style="color:#1f7a4c;font-weight:700;">Erdenet</div>
+        <div style="font-size:13px;opacity:0.85;">City exploration · Laundry · Local Naadam (if available)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 20 · 2026-07-26</div>
+        <div style="color:#1f7a4c;font-weight:700;">Amarbayasgalant</div>
+        <div style="font-size:13px;opacity:0.85;">Historic monastery visit · Camping</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 21 · 2026-07-27</div>
+        <div style="color:#1f7a4c;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Return drive · Coffee stops · Hotel</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 22 · 2026-07-28</div>
+        <div style="color:#1f7a4c;font-weight:700;">Departure</div>
+        <div style="font-size:13px;opacity:0.85;">Transfer to Chinggis Khaan International Airport</div>
+        </div>
+        
+<hr>
+<div style="font-weight:900;font-size:20px;">
+Total Distance ≈ 3,085 km
+</div>
+</div>
+    
+            <div class="folium-map" id="map_a0eda20b48c745af19416aa212bded99" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a0eda20b48c745af19416aa212bded99 = L.map(
+                "map_a0eda20b48c745af19416aa212bded99",
+                {
+                    center: [47.5, 103.5],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_495d76d9851c381ef0f1f604803b4c32 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var poly_line_b34a2c1602a1b8051317a0d6d3a02b50 = L.polyline(
+                [[47.92123, 106.918556], [48.1502, 107.576], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556], [47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [49.4747, 105.0843], [47.92123, 106.918556], [47.8408, 106.77]],
+                {"bubblingMouseEvents": true, "color": "#444444", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#444444", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var poly_line_b9c70b65151d8d3b2a250c723d960a99 = L.polyline(
+                [[47.92123, 106.918556], [48.1502, 107.576], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.918556]],
+                {"bubblingMouseEvents": true, "color": "#d94f2b", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d94f2b", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var poly_line_48430884a1c2cdaf2f7e3b86ddd18e3c = L.polyline(
+                [[47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556]],
+                {"bubblingMouseEvents": true, "color": "#6a3fbf", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#6a3fbf", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var poly_line_1d8f33d6d41c8439a67f1acf6ff36463 = L.polyline(
+                [[47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [49.4747, 105.0843], [47.92123, 106.918556], [47.8408, 106.77]],
+                {"bubblingMouseEvents": true, "color": "#1f7a4c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#1f7a4c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var marker_49a96ccc074841f25e1927b0bf9d2dd1 = L.marker(
+                [47.92123, 106.948556],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_8e896404d5ec103a0c01cde9cc19fd65 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#d94f2b;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    1\n    \u003c/div\u003e\n    "});
+            marker_49a96ccc074841f25e1927b0bf9d2dd1.setIcon(div_icon_8e896404d5ec103a0c01cde9cc19fd65);
+        
+    
+        var popup_6201d1c4340409d82a1c2682b0406aff = L.popup({"maxWidth": 480});
+
+        
+            var html_72d1f154e62fdd0c6f0d5841cce475ce = $(`<div id="html_72d1f154e62fdd0c6f0d5841cce475ce" style="width: 100.0%; height: 100.0%;">     <b>Day 1</b> · 2026-07-07<br>     <b>Ulaanbaatar</b><br>     City tour: National Museum · Gandan Monastery · Zaisan Monument · Welcome dinner     </div>`)[0];
+            popup_6201d1c4340409d82a1c2682b0406aff.setContent(html_72d1f154e62fdd0c6f0d5841cce475ce);
+        
+
+        marker_49a96ccc074841f25e1927b0bf9d2dd1.bindPopup(popup_6201d1c4340409d82a1c2682b0406aff)
+        ;
+
+        
+    
+    
+            marker_49a96ccc074841f25e1927b0bf9d2dd1.bindTooltip(
+                `<div>
+                     Day 1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_159dac301d02f51a15b6fd05685854bb = L.marker(
+                [48.1502, 107.576],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_15d5cc81f0c2c24a5e6e0646bfd4952a = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#d94f2b;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    2\n    \u003c/div\u003e\n    "});
+            marker_159dac301d02f51a15b6fd05685854bb.setIcon(div_icon_15d5cc81f0c2c24a5e6e0646bfd4952a);
+        
+    
+        var popup_b1566fdbbd7d73c7f04b47870a4c5630 = L.popup({"maxWidth": 480});
+
+        
+            var html_af9ed44bb2c7476f1a85d1f9a7189069 = $(`<div id="html_af9ed44bb2c7476f1a85d1f9a7189069" style="width: 100.0%; height: 100.0%;">     <b>Day 2</b> · 2026-07-08<br>     <b>Terelj National Park</b><br>     Chinggis Statue · Turtle Rock · Ariyabal Temple hike · Stargazing (yurt)     </div>`)[0];
+            popup_b1566fdbbd7d73c7f04b47870a4c5630.setContent(html_af9ed44bb2c7476f1a85d1f9a7189069);
+        
+
+        marker_159dac301d02f51a15b6fd05685854bb.bindPopup(popup_b1566fdbbd7d73c7f04b47870a4c5630)
+        ;
+
+        
+    
+    
+            marker_159dac301d02f51a15b6fd05685854bb.bindTooltip(
+                `<div>
+                     Day 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4a76b90370616bdb555e9381de8d1003 = L.marker(
+                [46.19858, 106.03066],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_7c58965cc8ece7b277e2c15bd0af4ca9 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#d94f2b;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    3\n    \u003c/div\u003e\n    "});
+            marker_4a76b90370616bdb555e9381de8d1003.setIcon(div_icon_7c58965cc8ece7b277e2c15bd0af4ca9);
+        
+    
+        var popup_d9e3d1941ff6774fe07d04cb9797b4ba = L.popup({"maxWidth": 480});
+
+        
+            var html_35343df85e1a766a6196168509e644da = $(`<div id="html_35343df85e1a766a6196168509e644da" style="width: 100.0%; height: 100.0%;">     <b>Day 3</b> · 2026-07-09<br>     <b>Baga Gazriin Chuluu</b><br>     Rock formations hike · Photography · Nomad camp · Stargazing     </div>`)[0];
+            popup_d9e3d1941ff6774fe07d04cb9797b4ba.setContent(html_35343df85e1a766a6196168509e644da);
+        
+
+        marker_4a76b90370616bdb555e9381de8d1003.bindPopup(popup_d9e3d1941ff6774fe07d04cb9797b4ba)
+        ;
+
+        
+    
+    
+            marker_4a76b90370616bdb555e9381de8d1003.bindTooltip(
+                `<div>
+                     Day 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8473816b92e50b206478158d96bb7692 = L.marker(
+                [43.495899, 104.082542],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_417a8a8a329f7760560feceda43f2ba8 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#d94f2b;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    4\n    \u003c/div\u003e\n    "});
+            marker_8473816b92e50b206478158d96bb7692.setIcon(div_icon_417a8a8a329f7760560feceda43f2ba8);
+        
+    
+        var popup_6e1320de58e2235c87e7f0e743b35f44 = L.popup({"maxWidth": 480});
+
+        
+            var html_938e9390cd176286d3bb2e0f339d9cf1 = $(`<div id="html_938e9390cd176286d3bb2e0f339d9cf1" style="width: 100.0%; height: 100.0%;">     <b>Day 4</b> · 2026-07-10<br>     <b>Yol Valley</b><br>     Tsagaan Suvarga stop · Scenic drive · Evening rest (yurt)     </div>`)[0];
+            popup_6e1320de58e2235c87e7f0e743b35f44.setContent(html_938e9390cd176286d3bb2e0f339d9cf1);
+        
+
+        marker_8473816b92e50b206478158d96bb7692.bindPopup(popup_6e1320de58e2235c87e7f0e743b35f44)
+        ;
+
+        
+    
+    
+            marker_8473816b92e50b206478158d96bb7692.bindTooltip(
+                `<div>
+                     Day 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c9bb098144a08772bec8fb4a002b10d9 = L.marker(
+                [43.7333, 102.333],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_33d8752a689416e510193656e522d3e9 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#d94f2b;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    5\n    \u003c/div\u003e\n    "});
+            marker_c9bb098144a08772bec8fb4a002b10d9.setIcon(div_icon_33d8752a689416e510193656e522d3e9);
+        
+    
+        var popup_c1ab1a49dc86c5d6cb2513035b8ece6b = L.popup({"maxWidth": 480});
+
+        
+            var html_5dcdf7e1ce74b3a8e209fb6ef6c7c066 = $(`<div id="html_5dcdf7e1ce74b3a8e209fb6ef6c7c066" style="width: 100.0%; height: 100.0%;">     <b>Day 5</b> · 2026-07-11<br>     <b>Gobi Sand Dunes</b><br>     Hike · Short horse ride · Camel riding · Sunset photography     </div>`)[0];
+            popup_c1ab1a49dc86c5d6cb2513035b8ece6b.setContent(html_5dcdf7e1ce74b3a8e209fb6ef6c7c066);
+        
+
+        marker_c9bb098144a08772bec8fb4a002b10d9.bindPopup(popup_c1ab1a49dc86c5d6cb2513035b8ece6b)
+        ;
+
+        
+    
+    
+            marker_c9bb098144a08772bec8fb4a002b10d9.bindTooltip(
+                `<div>
+                     Day 5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a03092618632dc24defd1f62f093a18c = L.marker(
+                [47.947210762113535, 106.933556],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_1c39f4a904e26acc42ab1607e178c8d6 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#d94f2b;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    6\n    \u003c/div\u003e\n    "});
+            marker_a03092618632dc24defd1f62f093a18c.setIcon(div_icon_1c39f4a904e26acc42ab1607e178c8d6);
+        
+    
+        var popup_a4c8e97548abb027b4a79e2b0edb0af9 = L.popup({"maxWidth": 480});
+
+        
+            var html_061a548168f23faa8f58e62c36406d0c = $(`<div id="html_061a548168f23faa8f58e62c36406d0c" style="width: 100.0%; height: 100.0%;">     <b>Day 6</b> · 2026-07-12<br>     <b>Ulaanbaatar</b><br>     Return drive · Hotel stay     </div>`)[0];
+            popup_a4c8e97548abb027b4a79e2b0edb0af9.setContent(html_061a548168f23faa8f58e62c36406d0c);
+        
+
+        marker_a03092618632dc24defd1f62f093a18c.bindPopup(popup_a4c8e97548abb027b4a79e2b0edb0af9)
+        ;
+
+        
+    
+    
+            marker_a03092618632dc24defd1f62f093a18c.bindTooltip(
+                `<div>
+                     Day 6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8659b9c6e0417c45b9c0cd87b652904a = L.marker(
+                [47.947210762113535, 106.903556],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_7e48e13500693cc28e01280b392f1266 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#6a3fbf;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    7\n    \u003c/div\u003e\n    "});
+            marker_8659b9c6e0417c45b9c0cd87b652904a.setIcon(div_icon_7e48e13500693cc28e01280b392f1266);
+        
+    
+        var popup_f8a019058e44f6e2916b729224b96661 = L.popup({"maxWidth": 480});
+
+        
+            var html_645b8d42d41e2e81ab706a59c7c16c68 = $(`<div id="html_645b8d42d41e2e81ab706a59c7c16c68" style="width: 100.0%; height: 100.0%;">     <b>Day 7</b> · 2026-07-13<br>     <b>Ulaanbaatar</b><br>     Naadam Festival: horse racing · wrestling · cultural events     </div>`)[0];
+            popup_f8a019058e44f6e2916b729224b96661.setContent(html_645b8d42d41e2e81ab706a59c7c16c68);
+        
+
+        marker_8659b9c6e0417c45b9c0cd87b652904a.bindPopup(popup_f8a019058e44f6e2916b729224b96661)
+        ;
+
+        
+    
+    
+            marker_8659b9c6e0417c45b9c0cd87b652904a.bindTooltip(
+                `<div>
+                     Day 7
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0c02daf0e9df8349eb1c4e0ea2ea9fba = L.marker(
+                [47.92123, 106.888556],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_45454f8a53dd8838f031909da8518715 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#6a3fbf;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    8\n    \u003c/div\u003e\n    "});
+            marker_0c02daf0e9df8349eb1c4e0ea2ea9fba.setIcon(div_icon_45454f8a53dd8838f031909da8518715);
+        
+    
+        var popup_5dacbb9e20f67183a80eafbd8d91b6f3 = L.popup({"maxWidth": 480});
+
+        
+            var html_ce29759b6253b36921ae25616acfb756 = $(`<div id="html_ce29759b6253b36921ae25616acfb756" style="width: 100.0%; height: 100.0%;">     <b>Day 8</b> · 2026-07-14<br>     <b>Ulaanbaatar</b><br>     Rest day · Shopping · Preparation     </div>`)[0];
+            popup_5dacbb9e20f67183a80eafbd8d91b6f3.setContent(html_ce29759b6253b36921ae25616acfb756);
+        
+
+        marker_0c02daf0e9df8349eb1c4e0ea2ea9fba.bindPopup(popup_5dacbb9e20f67183a80eafbd8d91b6f3)
+        ;
+
+        
+    
+    
+            marker_0c02daf0e9df8349eb1c4e0ea2ea9fba.bindTooltip(
+                `<div>
+                     Day 8
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7705e3d46b4d72957e9484c420633701 = L.marker(
+                [47.89524923788647, 106.903556],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_a99e3baa22fbd18fe815cf6b90cab023 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#6a3fbf;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    9\n    \u003c/div\u003e\n    "});
+            marker_7705e3d46b4d72957e9484c420633701.setIcon(div_icon_a99e3baa22fbd18fe815cf6b90cab023);
+        
+    
+        var popup_591edcb5dbcd129b1f2b6ffa0a79bd7d = L.popup({"maxWidth": 480});
+
+        
+            var html_2643e924e0511eec87fc0b0993b4c029 = $(`<div id="html_2643e924e0511eec87fc0b0993b4c029" style="width: 100.0%; height: 100.0%;">     <b>Day 9</b> · 2026-07-15<br>     <b>Ulaanbaatar</b><br>     Archery experience · Bogd Khan Museum · Evening concert     </div>`)[0];
+            popup_591edcb5dbcd129b1f2b6ffa0a79bd7d.setContent(html_2643e924e0511eec87fc0b0993b4c029);
+        
+
+        marker_7705e3d46b4d72957e9484c420633701.bindPopup(popup_591edcb5dbcd129b1f2b6ffa0a79bd7d)
+        ;
+
+        
+    
+    
+            marker_7705e3d46b4d72957e9484c420633701.bindTooltip(
+                `<div>
+                     Day 9
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_30086f7f0c2055e4b4d54e7723498047 = L.marker(
+                [47.3321, 103.6831],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_c20cff0cd8f1235d9c8e34a08fa12e74 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    10\n    \u003c/div\u003e\n    "});
+            marker_30086f7f0c2055e4b4d54e7723498047.setIcon(div_icon_c20cff0cd8f1235d9c8e34a08fa12e74);
+        
+    
+        var popup_4343ef3c61a290f27f19eb3203937425 = L.popup({"maxWidth": 480});
+
+        
+            var html_a00e7450156f230c23f4d9f4951e9452 = $(`<div id="html_a00e7450156f230c23f4d9f4951e9452" style="width: 100.0%; height: 100.0%;">     <b>Day 10</b> · 2026-07-16<br>     <b>Mini Gobi (Khustai / Elsen Tasarkhai)</b><br>     Przewalski’s horses · Dunes · Camel · Stargazing (tent)     </div>`)[0];
+            popup_4343ef3c61a290f27f19eb3203937425.setContent(html_a00e7450156f230c23f4d9f4951e9452);
+        
+
+        marker_30086f7f0c2055e4b4d54e7723498047.bindPopup(popup_4343ef3c61a290f27f19eb3203937425)
+        ;
+
+        
+    
+    
+            marker_30086f7f0c2055e4b4d54e7723498047.bindTooltip(
+                `<div>
+                     Day 10
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_88bb5d61ea6ce3c6ce595a02f2189d87 = L.marker(
+                [47.554, 102.8555],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_85cd9ba22aaab976caecbbd1a9819140 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    11\n    \u003c/div\u003e\n    "});
+            marker_88bb5d61ea6ce3c6ce595a02f2189d87.setIcon(div_icon_85cd9ba22aaab976caecbbd1a9819140);
+        
+    
+        var popup_8653a1ec5f64adbe3c23aa540fe8de00 = L.popup({"maxWidth": 480});
+
+        
+            var html_fc0e728838b1727269f30c97f29aa3ed = $(`<div id="html_fc0e728838b1727269f30c97f29aa3ed" style="width: 100.0%; height: 100.0%;">     <b>Day 11</b> · 2026-07-17<br>     <b>Orkhon Valley</b><br>     Nomad family stay · Hiking · Photography     </div>`)[0];
+            popup_8653a1ec5f64adbe3c23aa540fe8de00.setContent(html_fc0e728838b1727269f30c97f29aa3ed);
+        
+
+        marker_88bb5d61ea6ce3c6ce595a02f2189d87.bindPopup(popup_8653a1ec5f64adbe3c23aa540fe8de00)
+        ;
+
+        
+    
+    
+            marker_88bb5d61ea6ce3c6ce595a02f2189d87.bindTooltip(
+                `<div>
+                     Day 11
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4ce3eca2fb8c79f9b44aae477a13859 = L.marker(
+                [47.554, 102.7955],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_1b2dfdd3299b244a258eb9bb5a771d53 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    12\n    \u003c/div\u003e\n    "});
+            marker_d4ce3eca2fb8c79f9b44aae477a13859.setIcon(div_icon_1b2dfdd3299b244a258eb9bb5a771d53);
+        
+    
+        var popup_5fb72b382b3a3d26ae3c8d6b3bbe3d3a = L.popup({"maxWidth": 480});
+
+        
+            var html_3b5e6964dd07526a32a4b749e123cbc0 = $(`<div id="html_3b5e6964dd07526a32a4b749e123cbc0" style="width: 100.0%; height: 100.0%;">     <b>Day 12</b> · 2026-07-18<br>     <b>Orkhon Valley</b><br>     Nomad life experience · Extensive horse riding     </div>`)[0];
+            popup_5fb72b382b3a3d26ae3c8d6b3bbe3d3a.setContent(html_3b5e6964dd07526a32a4b749e123cbc0);
+        
+
+        marker_d4ce3eca2fb8c79f9b44aae477a13859.bindPopup(popup_5fb72b382b3a3d26ae3c8d6b3bbe3d3a)
+        ;
+
+        
+    
+    
+            marker_d4ce3eca2fb8c79f9b44aae477a13859.bindTooltip(
+                `<div>
+                     Day 12
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a809b23b687862e8a6913f4a612e09bf = L.marker(
+                [48.1692, 99.72],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_b4beea08934697565fc37a3266234311 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    13\n    \u003c/div\u003e\n    "});
+            marker_a809b23b687862e8a6913f4a612e09bf.setIcon(div_icon_b4beea08934697565fc37a3266234311);
+        
+    
+        var popup_b8f24134b1119c61993fab4707274c39 = L.popup({"maxWidth": 480});
+
+        
+            var html_49612cc1e674fd0b06a62f650b02fa39 = $(`<div id="html_49612cc1e674fd0b06a62f650b02fa39" style="width: 100.0%; height: 100.0%;">     <b>Day 13</b> · 2026-07-19<br>     <b>Great White Lake (Khorgo)</b><br>     Khorgo Volcano · Camping · Cooking outdoors     </div>`)[0];
+            popup_b8f24134b1119c61993fab4707274c39.setContent(html_49612cc1e674fd0b06a62f650b02fa39);
+        
+
+        marker_a809b23b687862e8a6913f4a612e09bf.bindPopup(popup_b8f24134b1119c61993fab4707274c39)
+        ;
+
+        
+    
+    
+            marker_a809b23b687862e8a6913f4a612e09bf.bindTooltip(
+                `<div>
+                     Day 13
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e87c7ea2aa666c4a40911d008b47259 = L.marker(
+                [48.9422, 99.534],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_c36f713ef7f2926f371fd2cb61c757b3 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    14\n    \u003c/div\u003e\n    "});
+            marker_5e87c7ea2aa666c4a40911d008b47259.setIcon(div_icon_c36f713ef7f2926f371fd2cb61c757b3);
+        
+    
+        var popup_ac7a27bcbf2585ab3d54151da37810ff = L.popup({"maxWidth": 480});
+
+        
+            var html_ff0cb9fd1a7ac4c91a2601a356eaa8fe = $(`<div id="html_ff0cb9fd1a7ac4c91a2601a356eaa8fe" style="width: 100.0%; height: 100.0%;">     <b>Day 14</b> · 2026-07-20<br>     <b>Shine‑Ider</b><br>     Scenic mountain/forest drive · Camping     </div>`)[0];
+            popup_ac7a27bcbf2585ab3d54151da37810ff.setContent(html_ff0cb9fd1a7ac4c91a2601a356eaa8fe);
+        
+
+        marker_5e87c7ea2aa666c4a40911d008b47259.bindPopup(popup_ac7a27bcbf2585ab3d54151da37810ff)
+        ;
+
+        
+    
+    
+            marker_5e87c7ea2aa666c4a40911d008b47259.bindTooltip(
+                `<div>
+                     Day 14
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4c2ac4115f3350bcaa7d54a6f3fc283b = L.marker(
+                [50.437, 100.157],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_e2fb0d9541fd324e044d85e7067150c6 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    15\n    \u003c/div\u003e\n    "});
+            marker_4c2ac4115f3350bcaa7d54a6f3fc283b.setIcon(div_icon_e2fb0d9541fd324e044d85e7067150c6);
+        
+    
+        var popup_d7190570441906ac7b25446e6141cfbf = L.popup({"maxWidth": 480});
+
+        
+            var html_3972b4db3da083768bdadd79a93eb236 = $(`<div id="html_3972b4db3da083768bdadd79a93eb236" style="width: 100.0%; height: 100.0%;">     <b>Day 15</b> · 2026-07-21<br>     <b>Lake Khövsgöl</b><br>     Supplies stop · Guesthouse stay     </div>`)[0];
+            popup_d7190570441906ac7b25446e6141cfbf.setContent(html_3972b4db3da083768bdadd79a93eb236);
+        
+
+        marker_4c2ac4115f3350bcaa7d54a6f3fc283b.bindPopup(popup_d7190570441906ac7b25446e6141cfbf)
+        ;
+
+        
+    
+    
+            marker_4c2ac4115f3350bcaa7d54a6f3fc283b.bindTooltip(
+                `<div>
+                     Day 15
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_509cb24e08484b7a1ad73dfaf13f139b = L.marker(
+                [51.3527, 99.352],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_5996d8f1eba79006e9aa1ce26450af0f = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    16\n    \u003c/div\u003e\n    "});
+            marker_509cb24e08484b7a1ad73dfaf13f139b.setIcon(div_icon_5996d8f1eba79006e9aa1ce26450af0f);
+        
+    
+        var popup_55185db2f0a25794fd9dee735c797969 = L.popup({"maxWidth": 480});
+
+        
+            var html_b3fb899532c6278c8984c76ccb707f77 = $(`<div id="html_b3fb899532c6278c8984c76ccb707f77" style="width: 100.0%; height: 100.0%;">     <b>Day 16</b> · 2026-07-22<br>     <b>Reindeer Tribe Area</b><br>     Boat ride · Reindeer tribe visit     </div>`)[0];
+            popup_55185db2f0a25794fd9dee735c797969.setContent(html_b3fb899532c6278c8984c76ccb707f77);
+        
+
+        marker_509cb24e08484b7a1ad73dfaf13f139b.bindPopup(popup_55185db2f0a25794fd9dee735c797969)
+        ;
+
+        
+    
+    
+            marker_509cb24e08484b7a1ad73dfaf13f139b.bindTooltip(
+                `<div>
+                     Day 16
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f25872440fbf3671b6ca432f62c59473 = L.marker(
+                [48.8072, 103.5635],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_b5c7937a1b9def3c9ab205ece9724d59 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    17\n    \u003c/div\u003e\n    "});
+            marker_f25872440fbf3671b6ca432f62c59473.setIcon(div_icon_b5c7937a1b9def3c9ab205ece9724d59);
+        
+    
+        var popup_1629221b925c94597dcad392c661555a = L.popup({"maxWidth": 480});
+
+        
+            var html_f57b576d22a23434c6e1e76f6436b7dd = $(`<div id="html_f57b576d22a23434c6e1e76f6436b7dd" style="width: 100.0%; height: 100.0%;">     <b>Day 17</b> · 2026-07-23<br>     <b>Bulgan Province</b><br>     Nomad family · Horse riding · Airag tasting     </div>`)[0];
+            popup_1629221b925c94597dcad392c661555a.setContent(html_f57b576d22a23434c6e1e76f6436b7dd);
+        
+
+        marker_f25872440fbf3671b6ca432f62c59473.bindPopup(popup_1629221b925c94597dcad392c661555a)
+        ;
+
+        
+    
+    
+            marker_f25872440fbf3671b6ca432f62c59473.bindTooltip(
+                `<div>
+                     Day 17
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2529f6ae1c04624100520a4e06e21e23 = L.marker(
+                [48.8072, 103.5035],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_e32e7d139ae0dee08bb9904697097aba = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    18\n    \u003c/div\u003e\n    "});
+            marker_2529f6ae1c04624100520a4e06e21e23.setIcon(div_icon_e32e7d139ae0dee08bb9904697097aba);
+        
+    
+        var popup_613083bd1573e46ef632d96596fa09f6 = L.popup({"maxWidth": 480});
+
+        
+            var html_dc2cbec78031887bc0d9fc78541f3821 = $(`<div id="html_dc2cbec78031887bc0d9fc78541f3821" style="width: 100.0%; height: 100.0%;">     <b>Day 18</b> · 2026-07-24<br>     <b>Bulgan Province</b><br>     Rest · Nomad life · Archery attempt     </div>`)[0];
+            popup_613083bd1573e46ef632d96596fa09f6.setContent(html_dc2cbec78031887bc0d9fc78541f3821);
+        
+
+        marker_2529f6ae1c04624100520a4e06e21e23.bindPopup(popup_613083bd1573e46ef632d96596fa09f6)
+        ;
+
+        
+    
+    
+            marker_2529f6ae1c04624100520a4e06e21e23.bindTooltip(
+                `<div>
+                     Day 18
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_377a9383ee263a444b4f50007040d5c0 = L.marker(
+                [49.0333, 104.083],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_f8610b9a7a6e58089d6102c65453ddc0 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    19\n    \u003c/div\u003e\n    "});
+            marker_377a9383ee263a444b4f50007040d5c0.setIcon(div_icon_f8610b9a7a6e58089d6102c65453ddc0);
+        
+    
+        var popup_41651123089b50c445b2c7a2e1d625fd = L.popup({"maxWidth": 480});
+
+        
+            var html_945a25c7cbf82692203ee1dc6a9a1885 = $(`<div id="html_945a25c7cbf82692203ee1dc6a9a1885" style="width: 100.0%; height: 100.0%;">     <b>Day 19</b> · 2026-07-25<br>     <b>Erdenet</b><br>     City exploration · Laundry · Local Naadam (if available)     </div>`)[0];
+            popup_41651123089b50c445b2c7a2e1d625fd.setContent(html_945a25c7cbf82692203ee1dc6a9a1885);
+        
+
+        marker_377a9383ee263a444b4f50007040d5c0.bindPopup(popup_41651123089b50c445b2c7a2e1d625fd)
+        ;
+
+        
+    
+    
+            marker_377a9383ee263a444b4f50007040d5c0.bindTooltip(
+                `<div>
+                     Day 19
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9dfae9e63092e582ea19ffe00d5d5c78 = L.marker(
+                [49.4747, 105.0843],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_b472ab894e16c6422349d06d3fe93fd1 = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    20\n    \u003c/div\u003e\n    "});
+            marker_9dfae9e63092e582ea19ffe00d5d5c78.setIcon(div_icon_b472ab894e16c6422349d06d3fe93fd1);
+        
+    
+        var popup_90c3d623f02c448f2a1aec3a8e77fa7d = L.popup({"maxWidth": 480});
+
+        
+            var html_50b8420cd7be0b84e8a52aaeeb453476 = $(`<div id="html_50b8420cd7be0b84e8a52aaeeb453476" style="width: 100.0%; height: 100.0%;">     <b>Day 20</b> · 2026-07-26<br>     <b>Amarbayasgalant</b><br>     Historic monastery visit · Camping     </div>`)[0];
+            popup_90c3d623f02c448f2a1aec3a8e77fa7d.setContent(html_50b8420cd7be0b84e8a52aaeeb453476);
+        
+
+        marker_9dfae9e63092e582ea19ffe00d5d5c78.bindPopup(popup_90c3d623f02c448f2a1aec3a8e77fa7d)
+        ;
+
+        
+    
+    
+            marker_9dfae9e63092e582ea19ffe00d5d5c78.bindTooltip(
+                `<div>
+                     Day 20
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eabf1c164676e902f72b6691b09eb34a = L.marker(
+                [47.89524923788647, 106.933556],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_70943dbb031d044a18cde69de9217e0c = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    21\n    \u003c/div\u003e\n    "});
+            marker_eabf1c164676e902f72b6691b09eb34a.setIcon(div_icon_70943dbb031d044a18cde69de9217e0c);
+        
+    
+        var popup_2ff2de8718c53ac7ab9d4f23416f4980 = L.popup({"maxWidth": 480});
+
+        
+            var html_1995537172e9f72a4d3e8c85c8c960e0 = $(`<div id="html_1995537172e9f72a4d3e8c85c8c960e0" style="width: 100.0%; height: 100.0%;">     <b>Day 21</b> · 2026-07-27<br>     <b>Ulaanbaatar</b><br>     Return drive · Coffee stops · Hotel     </div>`)[0];
+            popup_2ff2de8718c53ac7ab9d4f23416f4980.setContent(html_1995537172e9f72a4d3e8c85c8c960e0);
+        
+
+        marker_eabf1c164676e902f72b6691b09eb34a.bindPopup(popup_2ff2de8718c53ac7ab9d4f23416f4980)
+        ;
+
+        
+    
+    
+            marker_eabf1c164676e902f72b6691b09eb34a.bindTooltip(
+                `<div>
+                     Day 21
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f61cb5955ba78ad89b940676a35aaa52 = L.marker(
+                [47.8408, 106.77],
+                {}
+            ).addTo(map_a0eda20b48c745af19416aa212bded99);
+        
+    
+            var div_icon_fab389fe9096e33f4f10245a6c751bcc = L.divIcon({"className": "empty", "html": "\n    \u003cdiv style=\"width:42px;height:42px;border-radius:21px;\n    background:#1f7a4c;border:3px solid white;\n    box-shadow:0 3px 8px rgba(0,0,0,0.35);\n    display:flex;align-items:center;justify-content:center;\n    font-size:20px;font-weight:900;color:white;\"\u003e\n    22\n    \u003c/div\u003e\n    "});
+            marker_f61cb5955ba78ad89b940676a35aaa52.setIcon(div_icon_fab389fe9096e33f4f10245a6c751bcc);
+        
+    
+        var popup_4dd7d1623527052dd6c6ca5094087b06 = L.popup({"maxWidth": 480});
+
+        
+            var html_31662f2d21b071a1a68bb5ffa60bd6aa = $(`<div id="html_31662f2d21b071a1a68bb5ffa60bd6aa" style="width: 100.0%; height: 100.0%;">     <b>Day 22</b> · 2026-07-28<br>     <b>Departure</b><br>     Transfer to Chinggis Khaan International Airport     </div>`)[0];
+            popup_4dd7d1623527052dd6c6ca5094087b06.setContent(html_31662f2d21b071a1a68bb5ffa60bd6aa);
+        
+
+        marker_f61cb5955ba78ad89b940676a35aaa52.bindPopup(popup_4dd7d1623527052dd6c6ca5094087b06)
+        ;
+
+        
+    
+    
+            marker_f61cb5955ba78ad89b940676a35aaa52.bindTooltip(
+                `<div>
+                     Day 22
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            map_a0eda20b48c745af19416aa212bded99.fitBounds(
+                [[47.92123, 106.918556], [48.1502, 107.576], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556], [47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [49.4747, 105.0843], [47.92123, 106.918556], [47.8408, 106.77]],
+                {}
+            );
+        
+</script>
+</html>
