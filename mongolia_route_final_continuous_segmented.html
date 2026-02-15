@@ -32,91 +32,6 @@
                     left: 0.0%;
                     top: 0.0%;
                 }
-
-              
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-#map {
-  position: absolute;
-  inset: 0;
-}
-
-/* ===== INFO PANEL (DESKTOP) ===== */
-.info-panel {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  background: rgba(255,255,255,0.96);
-  border-radius: 18px;
-  border: 2px solid rgba(0,0,0,0.15);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-  font-family: Arial;
-  width: 440px;
-  max-height: 82%;
-  overflow: hidden;
-}
-
-.panel-header {
-  padding: 14px 18px 10px;
-  font-weight: 900;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
-}
-
-.panel-content {
-  padding: 14px 18px 18px;
-  overflow-y: auto;
-  max-height: calc(82vh - 60px);
-}
-
-/* ===== MOBILE BOTTOM SHEET ===== */
-@media (max-width: 768px) {
-
-  .info-panel {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: auto;
-    width: 100%;
-    height: 45vh;
-    max-height: none;
-    border-radius: 18px 18px 0 0;
-    transition: height 0.35s ease;
-  }
-
-  .info-panel.collapsed {
-    height: 64px;
-  }
-
-  .panel-header {
-    cursor: pointer;
-    text-align: center;
-    padding: 10px 0 8px;
-  }
-
-  .panel-handle {
-    width: 42px;
-    height: 5px;
-    background: #bbb;
-    border-radius: 3px;
-    margin: 0 auto 6px;
-  }
-
-  .panel-title {
-    font-size: 16px;
-    font-weight: 900;
-  }
-
-  .panel-content {
-    max-height: calc(100% - 64px);
-  }
-}
-
             </style>
         
 </head>
@@ -138,144 +53,150 @@ Mongolia Expedition Overview
     GOBI SEGMENT
     </div>
     
-       <div class="panel-content">
-
-<!-- ================= GOBI ================= -->
-<div style="font-size:16px;font-weight:900;color:#d94f2b;margin-bottom:6px;">
-GOBI SEGMENT
-</div>
-
-<div><b>Day 1 · 2026-07-07</b><br>
-<span style="color:#d94f2b;font-weight:700;">Ulaanbaatar</span><br>
-<small>National Museum · Gandan Monastery · Zaisan Monument · Welcome dinner</small>
-</div><br>
-
-<div><b>Day 2 · 2026-07-08</b><br>
-<span style="color:#d94f2b;font-weight:700;">Terelj National Park</span><br>
-<small>Chinggis Statue · Turtle Rock · Ariyabal Temple hike · Stargazing (yurt)</small>
-</div><br>
-
-<div><b>Day 3 · 2026-07-09</b><br>
-<span style="color:#d94f2b;font-weight:700;">Baga Gazriin Chuluu</span><br>
-<small>Rock formations hike · Photography · Nomad camp · Stargazing</small>
-</div><br>
-
-<div><b>Day 4 · 2026-07-10</b><br>
-<span style="color:#d94f2b;font-weight:700;">Yol Valley</span><br>
-<small>Tsagaan Suvarga stop · Scenic drive · Evening rest (yurt)</small>
-</div><br>
-
-<div><b>Day 5 · 2026-07-11</b><br>
-<span style="color:#d94f2b;font-weight:700;">Gobi Sand Dunes</span><br>
-<small>Hike · Short horse ride · Camel riding · Sunset photography</small>
-</div><br>
-
-<div><b>Day 6 · 2026-07-12</b><br>
-<span style="color:#d94f2b;font-weight:700;">Ulaanbaatar</span><br>
-<small>Return drive · Hotel stay</small>
-</div>
-
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 1 · 2026-07-07</div>
+        <div style="color:#d94f2b;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">City tour: National Museum · Gandan Monastery · Zaisan Monument · Welcome dinner</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 2 · 2026-07-08</div>
+        <div style="color:#d94f2b;font-weight:700;">Terelj National Park</div>
+        <div style="font-size:13px;opacity:0.85;">Chinggis Statue · Turtle Rock · Ariyabal Temple hike · Stargazing (yurt)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 3 · 2026-07-09</div>
+        <div style="color:#d94f2b;font-weight:700;">Baga Gazriin Chuluu</div>
+        <div style="font-size:13px;opacity:0.85;">Rock formations hike · Photography · Nomad camp · Stargazing</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 4 · 2026-07-10</div>
+        <div style="color:#d94f2b;font-weight:700;">Yol Valley</div>
+        <div style="font-size:13px;opacity:0.85;">Tsagaan Suvarga stop · Scenic drive · Evening rest (yurt)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 5 · 2026-07-11</div>
+        <div style="color:#d94f2b;font-weight:700;">Gobi Sand Dunes</div>
+        <div style="font-size:13px;opacity:0.85;">Hike · Short horse ride · Camel riding · Sunset photography</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 6 · 2026-07-12</div>
+        <div style="color:#d94f2b;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Return drive · Hotel stay</div>
+        </div>
+        
+    <div style="margin-top:14px;font-size:16px;font-weight:900;color:#6a3fbf;">
+    NAADAM SEGMENT
+    </div>
+    
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 7 · 2026-07-13</div>
+        <div style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Naadam Festival: horse racing · wrestling · cultural events</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 8 · 2026-07-14</div>
+        <div style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Rest day · Shopping · Preparation</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 9 · 2026-07-15</div>
+        <div style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Archery experience · Bogd Khan Museum · Evening concert</div>
+        </div>
+        
+    <div style="margin-top:14px;font-size:16px;font-weight:900;color:#1f7a4c;">
+    NORTH SEGMENT
+    </div>
+    
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 10 · 2026-07-16</div>
+        <div style="color:#1f7a4c;font-weight:700;">Mini Gobi (Khustai / Elsen Tasarkhai)</div>
+        <div style="font-size:13px;opacity:0.85;">Przewalski’s horses · Dunes · Camel · Stargazing (tent)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 11 · 2026-07-17</div>
+        <div style="color:#1f7a4c;font-weight:700;">Orkhon Valley</div>
+        <div style="font-size:13px;opacity:0.85;">Nomad family stay · Hiking · Photography</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 12 · 2026-07-18</div>
+        <div style="color:#1f7a4c;font-weight:700;">Orkhon Valley</div>
+        <div style="font-size:13px;opacity:0.85;">Nomad life experience · Extensive horse riding</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 13 · 2026-07-19</div>
+        <div style="color:#1f7a4c;font-weight:700;">Great White Lake (Khorgo)</div>
+        <div style="font-size:13px;opacity:0.85;">Khorgo Volcano · Camping · Cooking outdoors</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 14 · 2026-07-20</div>
+        <div style="color:#1f7a4c;font-weight:700;">Shine‑Ider</div>
+        <div style="font-size:13px;opacity:0.85;">Scenic mountain/forest drive · Camping</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 15 · 2026-07-21</div>
+        <div style="color:#1f7a4c;font-weight:700;">Lake Khövsgöl</div>
+        <div style="font-size:13px;opacity:0.85;">Supplies stop · Guesthouse stay</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 16 · 2026-07-22</div>
+        <div style="color:#1f7a4c;font-weight:700;">Reindeer Tribe Area</div>
+        <div style="font-size:13px;opacity:0.85;">Boat ride · Reindeer tribe visit</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 17 · 2026-07-23</div>
+        <div style="color:#1f7a4c;font-weight:700;">Bulgan Province</div>
+        <div style="font-size:13px;opacity:0.85;">Nomad family · Horse riding · Airag tasting</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 18 · 2026-07-24</div>
+        <div style="color:#1f7a4c;font-weight:700;">Bulgan Province</div>
+        <div style="font-size:13px;opacity:0.85;">Rest · Nomad life · Archery attempt</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 19 · 2026-07-25</div>
+        <div style="color:#1f7a4c;font-weight:700;">Erdenet</div>
+        <div style="font-size:13px;opacity:0.85;">City exploration · Laundry · Local Naadam (if available)</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 20 · 2026-07-26</div>
+        <div style="color:#1f7a4c;font-weight:700;">Amarbayasgalant</div>
+        <div style="font-size:13px;opacity:0.85;">Historic monastery visit · Camping</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 21 · 2026-07-27</div>
+        <div style="color:#1f7a4c;font-weight:700;">Ulaanbaatar</div>
+        <div style="font-size:13px;opacity:0.85;">Return drive · Coffee stops · Hotel</div>
+        </div>
+        
+        <div style="margin-bottom:8px;">
+        <div style="font-weight:800;">Day 22 · 2026-07-28</div>
+        <div style="color:#1f7a4c;font-weight:700;">Departure</div>
+        <div style="font-size:13px;opacity:0.85;">Transfer to Chinggis Khaan International Airport</div>
+        </div>
+        
 <hr>
-
-<!-- ================= NAADAM ================= -->
-<div style="font-size:16px;font-weight:900;color:#6a3fbf;margin-bottom:6px;">
-NAADAM SEGMENT
-</div>
-
-<div><b>Day 7 · 2026-07-13</b><br>
-<span style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</span><br>
-<small>Naadam Festival: horse racing · wrestling · cultural events</small>
-</div><br>
-
-<div><b>Day 8 · 2026-07-14</b><br>
-<span style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</span><br>
-<small>Rest day · Shopping · Preparation</small>
-</div><br>
-
-<div><b>Day 9 · 2026-07-15</b><br>
-<span style="color:#6a3fbf;font-weight:700;">Ulaanbaatar</span><br>
-<small>Archery experience · Bogd Khan Museum · Evening concert</small>
-</div>
-
-<hr>
-
-<!-- ================= NORTH ================= -->
-<div style="font-size:16px;font-weight:900;color:#1f7a4c;margin-bottom:6px;">
-NORTH SEGMENT
-</div>
-
-<div><b>Day 10 · 2026-07-16</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Mini Gobi (Khustai / Elsen Tasarkhai)</span><br>
-<small>Przewalski’s horses · Dunes · Camel · Stargazing (tent)</small>
-</div><br>
-
-<div><b>Day 11 · 2026-07-17</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Orkhon Valley</span><br>
-<small>Nomad family stay · Hiking · Photography</small>
-</div><br>
-
-<div><b>Day 12 · 2026-07-18</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Orkhon Valley</span><br>
-<small>Nomad life experience · Extensive horse riding</small>
-</div><br>
-
-<div><b>Day 13 · 2026-07-19</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Great White Lake (Khorgo)</span><br>
-<small>Khorgo Volcano · Camping · Outdoor cooking</small>
-</div><br>
-
-<div><b>Day 14 · 2026-07-20</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Shine-Ider</span><br>
-<small>Scenic mountain & forest drive · Camping</small>
-</div><br>
-
-<div><b>Day 15 · 2026-07-21</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Lake Khövsgöl</span><br>
-<small>Supplies stop · Guesthouse stay</small>
-</div><br>
-
-<div><b>Day 16 · 2026-07-22</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Reindeer Tribe Area</span><br>
-<small>Boat ride · Reindeer tribe visit</small>
-</div><br>
-
-<div><b>Day 17 · 2026-07-23</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Bulgan Province</span><br>
-<small>Nomad family · Horse riding · Airag tasting</small>
-</div><br>
-
-<div><b>Day 18 · 2026-07-24</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Bulgan Province</span><br>
-<small>Rest · Nomad life · Archery attempt</small>
-</div><br>
-
-<div><b>Day 19 · 2026-07-25</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Erdenet</span><br>
-<small>City exploration · Laundry · Local Naadam (if available)</small>
-</div><br>
-
-<div><b>Day 20 · 2026-07-26</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Amarbayasgalant</span><br>
-<small>Historic monastery visit · Camping</small>
-</div><br>
-
-<div><b>Day 21 · 2026-07-27</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Ulaanbaatar</span><br>
-<small>Return drive · Coffee stops · Hotel</small>
-</div><br>
-
-<div><b>Day 22 · 2026-07-28</b><br>
-<span style="color:#1f7a4c;font-weight:700;">Departure</span><br>
-<small>Transfer to Chinggis Khaan International Airport</small>
-</div>
-
-<hr>
-<div style="font-weight:900;font-size:18px;">
+<div style="font-weight:900;font-size:20px;">
 Total Distance ≈ 3,085 km
 </div>
-
-</div>
-
 </div>
     
             <div class="folium-map" id="map_a0eda20b48c745af19416aa212bded99" ></div>
