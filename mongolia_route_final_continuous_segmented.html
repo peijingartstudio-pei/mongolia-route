@@ -44,11 +44,11 @@ html, body { width:100%; height:100%; margin:0; padding:0; }
 .sb-total{ font-size:18px; font-weight:950; margin-top:14px; }
 .sb-note{ font-size:12px; opacity:0.75; margin-top:4px; }
 
-/* Popup card */
+/* Popup card (mobile-friendly) */
 .day-card{ font-family: Arial, sans-serif; }
-.day-card-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap: wrap; }
-.day-pill{ color:#fff; font-weight:950; padding:6px 12px; border-radius:999px; font-size:14px; white-space: nowrap; }
-.day-date{ font-weight:800; color:#333; font-size:14px; white-space: nowrap; }
+.day-card-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.day-pill{ color:#fff; font-weight:950; padding:6px 12px; border-radius:999px; font-size:14px; }
+.day-date{ font-weight:800; color:#333; font-size:14px; }
 .day-place{ font-weight:950; font-size:16px; margin:0 0 6px 0; }
 .card-ul{ margin:6px 0 0 18px; padding:0; }
 .card-ul li{ margin:4px 0; line-height:1.35; font-size:14px; }
@@ -57,36 +57,14 @@ html, body { width:100%; height:100%; margin:0; padding:0; }
 .leaflet-popup-content{ margin:14px 16px; }
 .leaflet-popup-content-wrapper{ border-radius:14px; }
 
-/* MOBILE: hide sidebar and fix popup to be wide */
+/* MOBILE: hide sidebar and increase readability */
 @media (max-width: 768px){
   .sidebar{ display:none; }
   .day-badge{ width:46px; height:46px; border-radius:23px; font-size:20px; }
-  
-  /* Force popup to be wide - nearly full screen width */
-  .leaflet-popup{
-    left: 10px !important;
-    right: 10px !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  .leaflet-popup-content-wrapper{
-    width: calc(100vw - 10px) !important;
-    max-width: calc(100vw - 10px) !important;
-  }
-  .leaflet-popup-content{ 
-    width: 100% !important;
-    max-width: none !important;
-    margin: 16px 18px;
-  }
-  .leaflet-popup-tip-container{
-    display: none;
-  }
-  
-  .day-place{ font-size:18px; line-height: 1.3; }
-  .card-ul{ margin-left: 20px; }
-  .card-ul li{ font-size:15px; line-height: 1.45; }
+  .leaflet-popup-content{ margin:16px 18px; }
+  .day-place{ font-size:18px; }
+  .card-ul li{ font-size:15px; }
   .day-date{ font-size:15px; }
-  .day-pill{ font-size:14px; }
 }
 </style>
 </head>
@@ -136,7 +114,7 @@ html, body { width:100%; height:100%; margin:0; padding:0; }
 <div class="sb-item">
   <div class="sb-day">Day 8 · 2026-07-14</div>
   <div class="sb-place" style="color:#6a3fbf">Ulaanbaatar</div>
-  <ul class="sb-ul"><li>Relax day</li><li>Rest + recover (we'll be tired by this point)</li><li>Shopping + preparation for the next destination</li></ul>
+  <ul class="sb-ul"><li>Relax day</li><li>Rest + recover (we’ll be tired by this point)</li><li>Shopping + preparation for the next destination</li></ul>
 </div>
 <div class="sb-item">
   <div class="sb-day">Day 9 · 2026-07-15</div>
@@ -147,7 +125,7 @@ html, body { width:100%; height:100%; margin:0; padding:0; }
 <div class="sb-item">
   <div class="sb-day">Day 10 · 2026-07-16</div>
   <div class="sb-place" style="color:#1f7a4c">Khustai NP → Elsen Tasarkhai (Mini Gobi)</div>
-  <ul class="sb-ul"><li>Drive to Khustai National Park → Przewalski's (wild) horses</li><li>Continue to Elsen Tasarkhai (Mini Gobi) · Lunch</li><li>Camel riding (~30 min)</li><li>Climb sand dunes → watch sunset</li><li>Dinner</li><li>Night: stargazing (clear desert sky)</li><li>Overnight: tent (your own tent)</li></ul>
+  <ul class="sb-ul"><li>Drive to Khustai National Park → Przewalski’s (wild) horses</li><li>Continue to Elsen Tasarkhai (Mini Gobi) · Lunch</li><li>Camel riding (~30 min)</li><li>Climb sand dunes → watch sunset</li><li>Dinner</li><li>Night: stargazing (clear desert sky)</li><li>Overnight: tent (your own tent)</li></ul>
 </div>
 <div class="sb-item">
   <div class="sb-day">Day 11 · 2026-07-17</div>
@@ -177,12 +155,12 @@ html, body { width:100%; height:100%; margin:0; padding:0; }
 <div class="sb-item">
   <div class="sb-day">Day 16 · 2026-07-22</div>
   <div class="sb-place" style="color:#1f7a4c">Lake Khövsgöl → Reindeer Tribe</div>
-  <ul class="sb-ul"><li>Visit Lake Khövsgöl + boat riding</li><li>Lunch</li><li>Afternoon: short drive to reindeer tribe for a visit (possible reindeer ride if they're not tired)</li><li>Note: July can be tough for reindeer (they prefer extreme cold)</li><li>Dinner</li><li>Overnight: same guesthouse (2nd night)</li></ul>
+  <ul class="sb-ul"><li>Visit Lake Khövsgöl + boat riding</li><li>Lunch</li><li>Afternoon: short drive to reindeer tribe for a visit (possible reindeer ride if they’re not tired)</li><li>Note: July can be tough for reindeer (they prefer extreme cold)</li><li>Dinner</li><li>Overnight: same guesthouse (2nd night)</li></ul>
 </div>
 <div class="sb-item">
   <div class="sb-day">Day 17 · 2026-07-23</div>
   <div class="sb-place" style="color:#1f7a4c">Bulgan Province (Nomad family)</div>
-  <ul class="sb-ul"><li>Drive to Bulgan province</li><li>Nomad family visit → horse riding</li><li>Airag (mare's milk) tasting</li><li>Overnight: tent if weather is nice; otherwise rent a ger</li></ul>
+  <ul class="sb-ul"><li>Drive to Bulgan province</li><li>Nomad family visit → horse riding</li><li>Airag (mare’s milk) tasting</li><li>Overnight: tent if weather is nice; otherwise rent a ger</li></ul>
 </div>
 <div class="sb-item">
   <div class="sb-day">Day 18 · 2026-07-24</div>
@@ -192,7 +170,7 @@ html, body { width:100%; height:100%; margin:0; padding:0; }
 <div class="sb-item">
   <div class="sb-day">Day 19 · 2026-07-25</div>
   <div class="sb-place" style="color:#1f7a4c">Erdenet</div>
-  <ul class="sb-ul"><li>Drive to Erdenet → explore (Mongolia's 2nd biggest city)</li><li>Find a place to shower + wash clothes (if possible)</li><li>Visit a local Naadam around there (schedule not out yet)</li><li>This day is an adventure day — trust me, we'll figure it out 😊</li></ul>
+  <ul class="sb-ul"><li>Drive to Erdenet → explore (Mongolia’s 2nd biggest city)</li><li>Find a place to shower + wash clothes (if possible)</li><li>Visit a local Naadam around there (schedule not out yet)</li><li>This day is an adventure day — trust me, we’ll figure it out 😊</li></ul>
 </div>
 <div class="sb-item">
   <div class="sb-day">Day 20 · 2026-07-26</div>
@@ -236,27 +214,13 @@ L.polyline([[47.92123, 106.918556], [48.1502, 107.576], [46.19858, 106.03066], [
 L.polyline([[47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556]], { color:"#6a3fbf", weight:6, opacity:0.9 }).addTo(map);
 L.polyline([[47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [49.4747, 105.0843], [47.92123, 106.918556], [47.8408, 106.77]], { color:"#1f7a4c", weight:6, opacity:0.9 }).addTo(map);
 
-// Detect mobile
-const isMobile = window.innerWidth <= 768;
-
-// Popup options - much wider on mobile
-const popupOptions = isMobile ? {
-  maxWidth: window.innerWidth - 40,
-  minWidth: window.innerWidth - 40,
-  autoPanPadding: [20, 20],
-  className: 'mobile-popup'
-} : {
-  maxWidth: 420,
-  autoPanPadding: [20, 20]
-};
-
 // markers
 
 (function(){
   const m = L.marker([47.921230, 106.918556]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">1</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 1</span>\n    <span class=\"day-date\">2026-07-07</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Arrival (noon time?) → transfer to hotel, check-in</li><li>City tour: National Museum · Gandan Monastery · Zaisan Monument</li><li>Welcome dinner + talk about upcoming trip & details</li><li>Overnight: hotel</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 1.0</span>\n    <span class=\"day-date\">2026-07-07</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Arrival (noon time?) \u2192 transfer to hotel, check-in</li><li>City tour: National Museum \u00b7 Gandan Monastery \u00b7 Zaisan Monument</li><li>Welcome dinner + talk about upcoming trip &amp; details</li><li>Overnight: hotel</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 1", { sticky:true });
 })();
 
@@ -264,7 +228,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([48.150200, 107.576000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">2</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 2</span>\n    <span class=\"day-date\">2026-07-08</span>\n  </div>\n  <div class=\"day-place\">Chinggis Horse Statue → Terelj National Park</div>\n  <ul class=\"card-ul\"><li>Drive to Chinggis Horse Statue (≈65 km) + hike up to the statue</li><li>Eagle handling & photos</li><li>Lunch</li><li>Drive to Terelj NP → settle into tourist yurt camp (your own ger)</li><li>Afternoon: Turtle Rock · Ariyabal Meditation Temple walk/hike + photography</li><li>Night: stargazing</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 2.0</span>\n    <span class=\"day-date\">2026-07-08</span>\n  </div>\n  <div class=\"day-place\">Chinggis Horse Statue \u2192 Terelj National Park</div>\n  <ul class=\"card-ul\"><li>Drive to Chinggis Horse Statue (\u224865 km) + hike up to the statue</li><li>Eagle handling &amp; photos</li><li>Lunch</li><li>Drive to Terelj NP \u2192 settle into tourist yurt camp (your own ger)</li><li>Afternoon: Turtle Rock \u00b7 Ariyabal Meditation Temple walk/hike + photography</li><li>Night: stargazing</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 2", { sticky:true });
 })();
 
@@ -272,7 +236,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([46.198580, 106.030660]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">3</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 3</span>\n    <span class=\"day-date\">2026-07-09</span>\n  </div>\n  <div class=\"day-place\">Baga Gazriin Chuluu (Middle Gobi)</div>\n  <ul class=\"card-ul\"><li>Drive to Baga Gazriin Chuluu (arrive ~2 pm; lunch on the way)</li><li>Settle in cozy nomad camp (private ger if possible; high season may share with other female travelers)</li><li>Hike & photography among rock formations (possible wildlife sighting)</li><li>Evening: Mongolian cuisine dinner</li><li>Night: stargazing + night photos</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 3.0</span>\n    <span class=\"day-date\">2026-07-09</span>\n  </div>\n  <div class=\"day-place\">Baga Gazriin Chuluu (Middle Gobi)</div>\n  <ul class=\"card-ul\"><li>Drive to Baga Gazriin Chuluu (arrive ~2 pm; lunch on the way)</li><li>Settle in cozy nomad camp (private ger if possible; high season may share with other female travelers)</li><li>Hike &amp; photography among rock formations (possible wildlife sighting)</li><li>Evening: Mongolian cuisine dinner</li><li>Night: stargazing + night photos</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 3", { sticky:true });
 })();
 
@@ -280,7 +244,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([43.495899, 104.082542]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">4</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 4</span>\n    <span class=\"day-date\">2026-07-10</span>\n  </div>\n  <div class=\"day-place\">Tsagaan Suvarga → Yol Valley</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Tsagaan Suvarga → visit for a couple of hours</li><li>Lunch</li><li>Continue drive to Yol Valley (~5 hours) → arrive evening</li><li>Settle in cozy yurt camp (private ger if possible; high season may share with other female travelers)</li><li>Optional: hand-making / crafting experience with camp host</li><li>Dinner</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 4.0</span>\n    <span class=\"day-date\">2026-07-10</span>\n  </div>\n  <div class=\"day-place\">Tsagaan Suvarga \u2192 Yol Valley</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Tsagaan Suvarga \u2192 visit for a couple of hours</li><li>Lunch</li><li>Continue drive to Yol Valley (~5 hours) \u2192 arrive evening</li><li>Settle in cozy yurt camp (private ger if possible; high season may share with other female travelers)</li><li>Optional: hand-making / crafting experience with camp host</li><li>Dinner</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 4", { sticky:true });
 })();
 
@@ -288,7 +252,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([43.733300, 102.333000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">5</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 5</span>\n    <span class=\"day-date\">2026-07-11</span>\n  </div>\n  <div class=\"day-place\">Yol Valley → Moltsog Sand Dunes</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Short drive to Yol Valley → hike + short horse riding</li><li>Drive to Moltsog sand dunes</li><li>Afternoon: camel riding</li><li>Evening: dune hike + photos</li><li>Overnight: tent camping</li><li>Early morning option: sunrise photo/video in the Gobi (weather permitting)</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 5.0</span>\n    <span class=\"day-date\">2026-07-11</span>\n  </div>\n  <div class=\"day-place\">Yol Valley \u2192 Moltsog Sand Dunes</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Short drive to Yol Valley \u2192 hike + short horse riding</li><li>Drive to Moltsog sand dunes</li><li>Afternoon: camel riding</li><li>Evening: dune hike + photos</li><li>Overnight: tent camping</li><li>Early morning option: sunrise photo/video in the Gobi (weather permitting)</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 5", { sticky:true });
 })();
 
@@ -296,7 +260,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.942443, 106.939769]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">6</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 6</span>\n    <span class=\"day-date\">2026-07-12</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive back to Ulaanbaatar → arrive evening</li><li>Stay: apartment (July 12–16) — much better than hotel</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 6.0</span>\n    <span class=\"day-date\">2026-07-12</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive back to Ulaanbaatar \u2192 arrive evening</li><li>Stay: apartment (July 12\u201316) \u2014 much better than hotel</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 6", { sticky:true });
 })();
 
@@ -304,7 +268,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.921230, 106.948556]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#6a3fbf\">7</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 7</span>\n    <span class=\"day-date\">2026-07-13</span>\n  </div>\n  <div class=\"day-place\">Naadam Festival (Ulaanbaatar)</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Naadam site</li><li>Festival events: horse racing · wrestling · other activities</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 7.0</span>\n    <span class=\"day-date\">2026-07-13</span>\n  </div>\n  <div class=\"day-place\">Naadam Festival (Ulaanbaatar)</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Naadam site</li><li>Festival events: horse racing \u00b7 wrestling \u00b7 other activities</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 7", { sticky:true });
 })();
 
@@ -312,7 +276,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.900017, 106.939769]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#6a3fbf\">8</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 8</span>\n    <span class=\"day-date\">2026-07-14</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Relax day</li><li>Rest + recover (we'll be tired by this point)</li><li>Shopping + preparation for the next destination</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 8.0</span>\n    <span class=\"day-date\">2026-07-14</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Relax day</li><li>Rest + recover (we\u2019ll be tired by this point)</li><li>Shopping + preparation for the next destination</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 8", { sticky:true });
 })();
 
@@ -320,7 +284,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.891230, 106.918556]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#6a3fbf\">9</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 9</span>\n    <span class=\"day-date\">2026-07-15</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Short drive to meet archery man → archery experience (half day)</li><li>Afternoon: Bogd King Museum</li><li>Evening: concert</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 9.0</span>\n    <span class=\"day-date\">2026-07-15</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Short drive to meet archery man \u2192 archery experience (half day)</li><li>Afternoon: Bogd King Museum</li><li>Evening: concert</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 9", { sticky:true });
 })();
 
@@ -328,7 +292,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.332100, 103.683100]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">10</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 10</span>\n    <span class=\"day-date\">2026-07-16</span>\n  </div>\n  <div class=\"day-place\">Khustai NP → Elsen Tasarkhai (Mini Gobi)</div>\n  <ul class=\"card-ul\"><li>Drive to Khustai National Park → Przewalski's (wild) horses</li><li>Continue to Elsen Tasarkhai (Mini Gobi) · Lunch</li><li>Camel riding (~30 min)</li><li>Climb sand dunes → watch sunset</li><li>Dinner</li><li>Night: stargazing (clear desert sky)</li><li>Overnight: tent (your own tent)</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 10.0</span>\n    <span class=\"day-date\">2026-07-16</span>\n  </div>\n  <div class=\"day-place\">Khustai NP \u2192 Elsen Tasarkhai (Mini Gobi)</div>\n  <ul class=\"card-ul\"><li>Drive to Khustai National Park \u2192 Przewalski\u2019s (wild) horses</li><li>Continue to Elsen Tasarkhai (Mini Gobi) \u00b7 Lunch</li><li>Camel riding (~30 min)</li><li>Climb sand dunes \u2192 watch sunset</li><li>Dinner</li><li>Night: stargazing (clear desert sky)</li><li>Overnight: tent (your own tent)</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 10", { sticky:true });
 })();
 
@@ -336,7 +300,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.554000, 102.825500]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">11</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 11</span>\n    <span class=\"day-date\">2026-07-17</span>\n  </div>\n  <div class=\"day-place\">Orkhon Valley</div>\n  <ul class=\"card-ul\"><li>Drive to Orkhon Valley</li><li>Visit nomad family → settle in yurt (your own ger)</li><li>Nomad life experience</li><li>Evening: hike to mountain + photos</li><li>Dinner (nomad)</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 11.0</span>\n    <span class=\"day-date\">2026-07-17</span>\n  </div>\n  <div class=\"day-place\">Orkhon Valley</div>\n  <ul class=\"card-ul\"><li>Drive to Orkhon Valley</li><li>Visit nomad family \u2192 settle in yurt (your own ger)</li><li>Nomad life experience</li><li>Evening: hike to mountain + photos</li><li>Dinner (nomad)</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 11", { sticky:true });
 })();
 
@@ -344,7 +308,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.575213, 102.846713]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">12</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 12</span>\n    <span class=\"day-date\">2026-07-18</span>\n  </div>\n  <div class=\"day-place\">Orkhon Valley</div>\n  <ul class=\"card-ul\"><li>Nomad life experience (full day)</li><li>Extensive horse riding (possibly yak riding too 😊)</li><li>Nomad breakfast · lunch · dinner</li><li>Overnight: yurt (your own ger)</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 12.0</span>\n    <span class=\"day-date\">2026-07-18</span>\n  </div>\n  <div class=\"day-place\">Orkhon Valley</div>\n  <ul class=\"card-ul\"><li>Nomad life experience (full day)</li><li>Extensive horse riding (possibly yak riding too \ud83d\ude0a)</li><li>Nomad breakfast \u00b7 lunch \u00b7 dinner</li><li>Overnight: yurt (your own ger)</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 12", { sticky:true });
 })();
 
@@ -352,7 +316,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([48.169200, 99.720000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">13</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 13</span>\n    <span class=\"day-date\">2026-07-19</span>\n  </div>\n  <div class=\"day-place\">Great White Lake (Khorgo area)</div>\n  <ul class=\"card-ul\"><li>Start driving toward Northern Mongolia (~6 hours)</li><li>Camp at Great White Lake near the volcano (Khorgo)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 13.0</span>\n    <span class=\"day-date\">2026-07-19</span>\n  </div>\n  <div class=\"day-place\">Great White Lake (Khorgo area)</div>\n  <ul class=\"card-ul\"><li>Start driving toward Northern Mongolia (~6 hours)</li><li>Camp at Great White Lake near the volcano (Khorgo)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 13", { sticky:true });
 })();
 
@@ -360,7 +324,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([48.942200, 99.534000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">14</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 14</span>\n    <span class=\"day-date\">2026-07-20</span>\n  </div>\n  <div class=\"day-place\">Shine Ider (Khövsgöl Province)</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Shine Ider county (scenic mountain + forest area)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 14.0</span>\n    <span class=\"day-date\">2026-07-20</span>\n  </div>\n  <div class=\"day-place\">Shine Ider (Kh\u00f6vsg\u00f6l Province)</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Shine Ider county (scenic mountain + forest area)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 14", { sticky:true });
 })();
 
@@ -368,7 +332,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([50.437000, 100.157000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">15</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 15</span>\n    <span class=\"day-date\">2026-07-21</span>\n  </div>\n  <div class=\"day-place\">Lake Khövsgöl</div>\n  <ul class=\"card-ul\"><li>Drive to Lake Khövsgöl</li><li>Stop at province center for groceries / water</li><li>Stay at cozy guesthouse</li><li>Good chance to meet & chat with travelers from other countries</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 15.0</span>\n    <span class=\"day-date\">2026-07-21</span>\n  </div>\n  <div class=\"day-place\">Lake Kh\u00f6vsg\u00f6l</div>\n  <ul class=\"card-ul\"><li>Drive to Lake Kh\u00f6vsg\u00f6l</li><li>Stop at province center for groceries / water</li><li>Stay at cozy guesthouse</li><li>Good chance to meet &amp; chat with travelers from other countries</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 15", { sticky:true });
 })();
 
@@ -376,7 +340,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([51.352700, 99.352000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">16</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 16</span>\n    <span class=\"day-date\">2026-07-22</span>\n  </div>\n  <div class=\"day-place\">Lake Khövsgöl → Reindeer Tribe</div>\n  <ul class=\"card-ul\"><li>Visit Lake Khövsgöl + boat riding</li><li>Lunch</li><li>Afternoon: short drive to reindeer tribe for a visit (possible reindeer ride if they're not tired)</li><li>Note: July can be tough for reindeer (they prefer extreme cold)</li><li>Dinner</li><li>Overnight: same guesthouse (2nd night)</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 16.0</span>\n    <span class=\"day-date\">2026-07-22</span>\n  </div>\n  <div class=\"day-place\">Lake Kh\u00f6vsg\u00f6l \u2192 Reindeer Tribe</div>\n  <ul class=\"card-ul\"><li>Visit Lake Kh\u00f6vsg\u00f6l + boat riding</li><li>Lunch</li><li>Afternoon: short drive to reindeer tribe for a visit (possible reindeer ride if they\u2019re not tired)</li><li>Note: July can be tough for reindeer (they prefer extreme cold)</li><li>Dinner</li><li>Overnight: same guesthouse (2nd night)</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 16", { sticky:true });
 })();
 
@@ -384,7 +348,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([48.807200, 103.533500]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">17</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 17</span>\n    <span class=\"day-date\">2026-07-23</span>\n  </div>\n  <div class=\"day-place\">Bulgan Province (Nomad family)</div>\n  <ul class=\"card-ul\"><li>Drive to Bulgan province</li><li>Nomad family visit → horse riding</li><li>Airag (mare's milk) tasting</li><li>Overnight: tent if weather is nice; otherwise rent a ger</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 17.0</span>\n    <span class=\"day-date\">2026-07-23</span>\n  </div>\n  <div class=\"day-place\">Bulgan Province (Nomad family)</div>\n  <ul class=\"card-ul\"><li>Drive to Bulgan province</li><li>Nomad family visit \u2192 horse riding</li><li>Airag (mare\u2019s milk) tasting</li><li>Overnight: tent if weather is nice; otherwise rent a ger</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 17", { sticky:true });
 })();
 
@@ -392,7 +356,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([48.828413, 103.554713]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">18</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 18</span>\n    <span class=\"day-date\">2026-07-24</span>\n  </div>\n  <div class=\"day-place\">Bulgan Province</div>\n  <ul class=\"card-ul\"><li>Rest day + nomad life experience</li><li>Try to arrange archery man + crafting people to teach/show local skills</li><li>Overnight: tent or ger</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 18.0</span>\n    <span class=\"day-date\">2026-07-24</span>\n  </div>\n  <div class=\"day-place\">Bulgan Province</div>\n  <ul class=\"card-ul\"><li>Rest day + nomad life experience</li><li>Try to arrange archery man + crafting people to teach/show local skills</li><li>Overnight: tent or ger</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 18", { sticky:true });
 })();
 
@@ -400,7 +364,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([49.033300, 104.083000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">19</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 19</span>\n    <span class=\"day-date\">2026-07-25</span>\n  </div>\n  <div class=\"day-place\">Erdenet</div>\n  <ul class=\"card-ul\"><li>Drive to Erdenet → explore (Mongolia's 2nd biggest city)</li><li>Find a place to shower + wash clothes (if possible)</li><li>Visit a local Naadam around there (schedule not out yet)</li><li>This day is an adventure day — trust me, we'll figure it out 😊</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 19.0</span>\n    <span class=\"day-date\">2026-07-25</span>\n  </div>\n  <div class=\"day-place\">Erdenet</div>\n  <ul class=\"card-ul\"><li>Drive to Erdenet \u2192 explore (Mongolia\u2019s 2nd biggest city)</li><li>Find a place to shower + wash clothes (if possible)</li><li>Visit a local Naadam around there (schedule not out yet)</li><li>This day is an adventure day \u2014 trust me, we\u2019ll figure it out \ud83d\ude0a</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 19", { sticky:true });
 })();
 
@@ -408,7 +372,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([49.474700, 105.084300]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">20</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 20</span>\n    <span class=\"day-date\">2026-07-26</span>\n  </div>\n  <div class=\"day-place\">Amarbayasgalant Monastery</div>\n  <ul class=\"card-ul\"><li>Drive to Amarbayasgalant Monastery (famous, rich history)</li><li>Visit monastery site</li><li>Overnight: tent camping</li><li>Cook our own meal</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 20.0</span>\n    <span class=\"day-date\">2026-07-26</span>\n  </div>\n  <div class=\"day-place\">Amarbayasgalant Monastery</div>\n  <ul class=\"card-ul\"><li>Drive to Amarbayasgalant Monastery (famous, rich history)</li><li>Visit monastery site</li><li>Overnight: tent camping</li><li>Cook our own meal</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 20", { sticky:true });
 })();
 
@@ -416,7 +380,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.900017, 106.897343]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">21</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 21</span>\n    <span class=\"day-date\">2026-07-27</span>\n  </div>\n  <div class=\"day-place\">Return to Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Drive back to Ulaanbaatar</li><li>Stops at small counties + restaurants/coffee shops on the way</li><li>Overnight: hotel</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 21.0</span>\n    <span class=\"day-date\">2026-07-27</span>\n  </div>\n  <div class=\"day-place\">Return to Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Drive back to Ulaanbaatar</li><li>Stops at small counties + restaurants/coffee shops on the way</li><li>Overnight: hotel</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 21", { sticky:true });
 })();
 
@@ -424,7 +388,7 @@ const popupOptions = isMobile ? {
   const m = L.marker([47.840800, 106.770000]).addTo(map);
   const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">22</div>" });
   m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 22</span>\n    <span class=\"day-date\">2026-07-28</span>\n  </div>\n  <div class=\"day-place\">Departure (Airport transfer)</div>\n  <ul class=\"card-ul\"><li>Pick-up</li><li>Transfer to the airport 😊</li></ul>\n</div>", popupOptions);
+  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 22.0</span>\n    <span class=\"day-date\">2026-07-28</span>\n  </div>\n  <div class=\"day-place\">Departure (Airport transfer)</div>\n  <ul class=\"card-ul\"><li>Pick-up</li><li>Transfer to the airport \ud83d\ude0a</li></ul>\n</div>", { maxWidth: 420 });
   m.bindTooltip("Day 22", { sticky:true });
 })();
 
