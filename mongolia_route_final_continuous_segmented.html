@@ -3,397 +3,397 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
+<title>Mongolia Itinerary Overview</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <style>
 html, body { width:100%; height:100%; margin:0; padding:0; }
-#map_mongolia { position:absolute; top:0; bottom:0; left:0; right:0; }
-
-/* Day badge on map */
-.day-badge{
-  width:44px; height:44px; border-radius:22px;
-  border:3px solid #fff;
+#map { position:absolute; top:0; bottom:0; right:0; left:0; }
+.day-badge {
+  width:44px; height:44px; border-radius:22px; border:3px solid #fff;
   box-shadow:0 3px 8px rgba(0,0,0,0.35);
   display:flex; align-items:center; justify-content:center;
-  font: 900 20px/1 Arial, sans-serif;
-  color:#fff;
+  font:900 18px Arial, sans-serif; color:#fff;
 }
-
-/* Sidebar (desktop) */
-.sidebar{
-  position:fixed; top:18px; right:18px; z-index:9999;
-  width:480px; max-height:84%;
-  overflow:auto;
+.sidebar {
+  position:fixed; top:16px; right:16px; z-index:9999;
+  width:450px; max-height:85vh; overflow:auto;
   background:rgba(255,255,255,0.97);
-  border:2px solid rgba(0,0,0,0.12);
-  border-radius:18px;
-  padding:18px 20px;
+  border-radius:18px; padding:18px 20px;
   box-shadow:0 6px 18px rgba(0,0,0,0.25);
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
 }
-.sb-header{ font-size:24px; font-weight:950; margin-bottom:10px; }
-.sb-seg-title{ margin-top:14px; font-size:18px; font-weight:950; letter-spacing:0.6px; }
-.sb-item{ margin:10px 0 16px 0; padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.08); }
-.sb-item:last-child{ border-bottom:none; padding-bottom:0; }
-.sb-day{ font-weight:900; font-size:16px; color:#111; }
-.sb-place{ font-weight:950; font-size:17px; margin-top:4px; }
-.sb-ul{ margin:8px 0 0 18px; padding:0; }
-.sb-ul li{ margin:4px 0; line-height:1.35; font-size:14px; color:#222; }
-.sb-total{ font-size:18px; font-weight:950; margin-top:14px; }
-.sb-note{ font-size:12px; opacity:0.75; margin-top:4px; }
-
-/* Popup card (mobile-friendly) */
-.day-card{ font-family: Arial, sans-serif; }
-.day-card-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-.day-pill{ color:#fff; font-weight:950; padding:6px 12px; border-radius:999px; font-size:14px; }
-.day-date{ font-weight:800; color:#333; font-size:14px; }
-.day-place{ font-weight:950; font-size:16px; margin:0 0 6px 0; }
-.card-ul{ margin:6px 0 0 18px; padding:0; }
-.card-ul li{ margin:4px 0; line-height:1.35; font-size:14px; }
-
-/* Make Leaflet popups look cleaner */
-.leaflet-popup-content{ margin:5px 5px; }
-.leaflet-popup-content-wrapper{ border-radius:14px;}
-
-/* MOBILE: hide sidebar and increase readability */
-@media (max-width: 768px){
-  .sidebar{ display:none; }
-  .day-badge{ width:46px; height:46px; border-radius:23px; font-size:20px; }
-  .leaflet-popup-content{ margin:5px 5px; }
-  .day-place{ font-size:18px; }
-  .card-ul li{ font-size:15px; }
-  .day-date{ font-size:15px; }
+.sb-header { font-size:22px; font-weight:900; margin-bottom:8px; }
+.sb-seg { margin-top:16px; }
+.sb-seg-title { font-size:18px; font-weight:900; margin-bottom:8px; }
+.sb-item { margin:0 0 14px 0; }
+.sb-day { font-size:16px; font-weight:900; }
+.sb-place { font-size:16px; font-weight:900; margin-top:2px; line-height:1.25; }
+.sb-ul { margin:6px 0 0 18px; padding:0; }
+.sb-ul li { margin:5px 0; line-height:1.42; font-size:14px; }
+.sb-total { margin-top:14px; font-size:18px; font-weight:900; }
+.sb-note { margin-top:4px; font-size:12px; opacity:0.75; }
+.day-card {
+  font-family:Arial, sans-serif;
+  max-height:60vh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.day-card-top {
+  display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;
+}
+.day-pill {
+  color:#fff; font-weight:900; padding:6px 12px; border-radius:999px; font-size:14px; white-space:nowrap;
+}
+.day-date { font-weight:800; font-size:14px; color:#333; }
+.day-place { font-weight:900; font-size:18px; margin:6px 0 8px 0; line-height:1.25; }
+.card-ul { margin:6px 0 0 18px; padding:0; }
+.card-ul li { margin:6px 0; line-height:1.45; font-size:15px; word-break:break-word; }
+.leaflet-popup-content { margin:14px 16px; max-width:92vw; }
+.leaflet-popup-content-wrapper { border-radius:16px; }
+@media (max-width: 768px) {
+  .sidebar { display:none; }
+  .day-badge { width:46px; height:46px; border-radius:23px; font-size:19px; }
+  .leaflet-popup-content { max-height:55vh; overflow-y:auto; }
 }
 </style>
 </head>
-
 <body>
-<div id="map_mongolia"></div>
-
-<div id="sidebar" class="sidebar">
+<div class="sidebar">
   <div class="sb-header">Mongolia Expedition Overview</div>
-  <div class="sb-seg-title" style="color:#d94f2b">GOBI SEGMENT</div>
-<div class="sb-item">
-  <div class="sb-day">Day 1 · 2026-07-07</div>
-  <div class="sb-place" style="color:#d94f2b">Ulaanbaatar</div>
-  <ul class="sb-ul"><li>Arrival (noon time?) → transfer to hotel, check-in</li><li>City tour: National Museum · Gandan Monastery · Zaisan Monument</li><li>Welcome dinner + talk about upcoming trip &amp; details</li><li>Overnight: hotel</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 2 · 2026-07-08</div>
-  <div class="sb-place" style="color:#d94f2b">Chinggis Horse Statue → Terelj National Park</div>
-  <ul class="sb-ul"><li>Drive to Chinggis Horse Statue (≈65 km) + hike up to the statue</li><li>Eagle handling &amp; photos</li><li>Lunch</li><li>Drive to Terelj NP → settle into tourist yurt camp (your own ger)</li><li>Afternoon: Turtle Rock · Ariyabal Meditation Temple walk/hike + photography</li><li>Night: stargazing</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 3 · 2026-07-09</div>
-  <div class="sb-place" style="color:#d94f2b">Baga Gazriin Chuluu (Middle Gobi)</div>
-  <ul class="sb-ul"><li>Drive to Baga Gazriin Chuluu (arrive ~2 pm; lunch on the way)</li><li>Settle in cozy nomad camp (private ger if possible; high season may share with other female travelers)</li><li>Hike &amp; photography among rock formations (possible wildlife sighting)</li><li>Evening: Mongolian cuisine dinner</li><li>Night: stargazing + night photos</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 4 · 2026-07-10</div>
-  <div class="sb-place" style="color:#d94f2b">Tsagaan Suvarga → Yol Valley</div>
-  <ul class="sb-ul"><li>Breakfast</li><li>Drive to Tsagaan Suvarga → visit for a couple of hours</li><li>Lunch</li><li>Continue drive to Yol Valley (~5 hours) → arrive evening</li><li>Settle in cozy yurt camp (private ger if possible; high season may share with other female travelers)</li><li>Optional: hand-making / crafting experience with camp host</li><li>Dinner</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 5 · 2026-07-11</div>
-  <div class="sb-place" style="color:#d94f2b">Yol Valley → Moltsog Sand Dunes</div>
-  <ul class="sb-ul"><li>Breakfast</li><li>Short drive to Yol Valley → hike + short horse riding</li><li>Drive to Moltsog sand dunes</li><li>Afternoon: camel riding</li><li>Evening: dune hike + photos</li><li>Overnight: tent camping</li><li>Early morning option: sunrise photo/video in the Gobi (weather permitting)</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 6 · 2026-07-12</div>
-  <div class="sb-place" style="color:#d94f2b">Ulaanbaatar</div>
-  <ul class="sb-ul"><li>Breakfast</li><li>Drive back to Ulaanbaatar → arrive evening</li><li>Stay: apartment (July 12–16) — much better than hotel</li></ul>
-</div>
-<div class="sb-seg-title" style="color:#6a3fbf">NAADAM SEGMENT</div>
-<div class="sb-item">
-  <div class="sb-day">Day 7 · 2026-07-13</div>
-  <div class="sb-place" style="color:#6a3fbf">Naadam Festival (Ulaanbaatar)</div>
-  <ul class="sb-ul"><li>Breakfast</li><li>Drive to Naadam site</li><li>Festival events: horse racing · wrestling · other activities</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 8 · 2026-07-14</div>
-  <div class="sb-place" style="color:#6a3fbf">Ulaanbaatar</div>
-  <ul class="sb-ul"><li>Relax day</li><li>Rest + recover (we’ll be tired by this point)</li><li>Shopping + preparation for the next destination</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 9 · 2026-07-15</div>
-  <div class="sb-place" style="color:#6a3fbf">Ulaanbaatar</div>
-  <ul class="sb-ul"><li>Short drive to meet archery man → archery experience (half day)</li><li>Afternoon: Bogd King Museum</li><li>Evening: concert</li></ul>
-</div>
-<div class="sb-seg-title" style="color:#1f7a4c">NORTH SEGMENT</div>
-<div class="sb-item">
-  <div class="sb-day">Day 10 · 2026-07-16</div>
-  <div class="sb-place" style="color:#1f7a4c">Khustai NP → Elsen Tasarkhai (Mini Gobi)</div>
-  <ul class="sb-ul"><li>Drive to Khustai National Park → Przewalski’s (wild) horses</li><li>Continue to Elsen Tasarkhai (Mini Gobi) · Lunch</li><li>Camel riding (~30 min)</li><li>Climb sand dunes → watch sunset</li><li>Dinner</li><li>Night: stargazing (clear desert sky)</li><li>Overnight: tent (your own tent)</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 11 · 2026-07-17</div>
-  <div class="sb-place" style="color:#1f7a4c">Orkhon Valley</div>
-  <ul class="sb-ul"><li>Drive to Orkhon Valley</li><li>Visit nomad family → settle in yurt (your own ger)</li><li>Nomad life experience</li><li>Evening: hike to mountain + photos</li><li>Dinner (nomad)</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 12 · 2026-07-18</div>
-  <div class="sb-place" style="color:#1f7a4c">Orkhon Valley</div>
-  <ul class="sb-ul"><li>Nomad life experience (full day)</li><li>Extensive horse riding (possibly yak riding too 😊)</li><li>Nomad breakfast · lunch · dinner</li><li>Overnight: yurt (your own ger)</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 13 · 2026-07-19</div>
-  <div class="sb-place" style="color:#1f7a4c">Great White Lake (Khorgo area)</div>
-  <ul class="sb-ul"><li>Start driving toward Northern Mongolia (~6 hours)</li><li>Camp at Great White Lake near the volcano (Khorgo)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 14 · 2026-07-20</div>
-  <div class="sb-place" style="color:#1f7a4c">Shine Ider (Khövsgöl Province)</div>
-  <ul class="sb-ul"><li>Breakfast</li><li>Drive to Shine Ider county (scenic mountain + forest area)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 15 · 2026-07-21</div>
-  <div class="sb-place" style="color:#1f7a4c">Lake Khövsgöl</div>
-  <ul class="sb-ul"><li>Drive to Lake Khövsgöl</li><li>Stop at province center for groceries / water</li><li>Stay at cozy guesthouse</li><li>Good chance to meet &amp; chat with travelers from other countries</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 16 · 2026-07-22</div>
-  <div class="sb-place" style="color:#1f7a4c">Lake Khövsgöl → Reindeer Tribe</div>
-  <ul class="sb-ul"><li>Visit Lake Khövsgöl + boat riding</li><li>Lunch</li><li>Afternoon: short drive to reindeer tribe for a visit (possible reindeer ride if they’re not tired)</li><li>Note: July can be tough for reindeer (they prefer extreme cold)</li><li>Dinner</li><li>Overnight: same guesthouse (2nd night)</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 17 · 2026-07-23</div>
-  <div class="sb-place" style="color:#1f7a4c">Bulgan Province (Nomad family)</div>
-  <ul class="sb-ul"><li>Drive to Bulgan province</li><li>Nomad family visit → horse riding</li><li>Airag (mare’s milk) tasting</li><li>Overnight: tent if weather is nice; otherwise rent a ger</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 18 · 2026-07-24</div>
-  <div class="sb-place" style="color:#1f7a4c">Bulgan Province</div>
-  <ul class="sb-ul"><li>Rest day + nomad life experience</li><li>Try to arrange archery man + crafting people to teach/show local skills</li><li>Overnight: tent or ger</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 19 · 2026-07-25</div>
-  <div class="sb-place" style="color:#1f7a4c">Erdenet</div>
-  <ul class="sb-ul"><li>Drive to Erdenet → explore (Mongolia’s 2nd biggest city)</li><li>Find a place to shower + wash clothes (if possible)</li><li>Visit a local Naadam around there (schedule not out yet)</li><li>This day is an adventure day — trust me, we’ll figure it out 😊</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 20 · 2026-07-26</div>
-  <div class="sb-place" style="color:#1f7a4c">Amarbayasgalant Monastery</div>
-  <ul class="sb-ul"><li>Drive to Amarbayasgalant Monastery (famous, rich history)</li><li>Visit monastery site</li><li>Overnight: tent camping</li><li>Cook our own meal</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 21 · 2026-07-27</div>
-  <div class="sb-place" style="color:#1f7a4c">Return to Ulaanbaatar</div>
-  <ul class="sb-ul"><li>Drive back to Ulaanbaatar</li><li>Stops at small counties + restaurants/coffee shops on the way</li><li>Overnight: hotel</li></ul>
-</div>
-<div class="sb-item">
-  <div class="sb-day">Day 22 · 2026-07-28</div>
-  <div class="sb-place" style="color:#1f7a4c">Departure (Airport transfer)</div>
-  <ul class="sb-ul"><li>Pick-up</li><li>Transfer to the airport 😊</li></ul>
-</div>
-  <div class="sb-total">Total Distance ≈ 3,085 km</div>
-  <div class="sb-note">Distance is approximate (great-circle between daily points).</div>
+  
+    <div class="sb-seg">
+      <div class="sb-seg-title" style="color:#d95f2b">GOBI JOURNEY</div>
+      
+        <div class="sb-item">
+          <div class="sb-day">Day 1 · 2026-07-06</div>
+          <div class="sb-place" style="color:#d95f2b">Arrival → Ulaanbaatar apartment</div>
+          <ul class="sb-ul"><li>Arrival at 16:45</li><li>Drive to UB (about 50 km)</li><li>Settle in at the apartment</li><li>Dinner at the apartment</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 2 · 2026-07-07</div>
+          <div class="sb-place" style="color:#d95f2b">Baga Gazriin Chuluu</div>
+          <ul class="sb-ul"><li>Drive to Middle Gobi</li><li>Lunch on the way</li><li>Arrive around 2 pm and settle in a cozy nomad camp</li><li>Private ger will be attempted, but high season may mean sharing with other female travelers</li><li>Hike and photograph rock formations, possibly see wild ibex</li><li>Evening Mongolian dinner</li><li>Stargazing and night photography</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 3 · 2026-07-08</div>
+          <div class="sb-place" style="color:#d95f2b">Tsagaan Suvarga → Yol Valley</div>
+          <ul class="sb-ul"><li>Breakfast</li><li>Drive to Tsagaan Suvarga for a couple of hours</li><li>Lunch</li><li>Continue to Yol Valley (about 5 hours)</li><li>Settle in cozy yurt camp</li><li>Private ger will be attempted, but sharing may be necessary in high season</li><li>Possible hand-making / crafting experience</li><li>Dinner</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 4 · 2026-07-09</div>
+          <div class="sb-place" style="color:#d95f2b">Yol Valley → Moltsog Sand Dunes → Flaming Cliff</div>
+          <ul class="sb-ul"><li>Breakfast</li><li>Short drive to Yol Valley</li><li>Hike and short horse riding</li><li>Drive to Moltsog Sand Dunes and Flaming Cliff</li><li>Camel riding in the afternoon</li><li>Evening dune hike and photo taking</li><li>Camp in a tent</li><li>Wake up very early next morning for sunrise photo/video in the Gobi Desert if the sky is clear</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 5 · 2026-07-10</div>
+          <div class="sb-place" style="color:#d95f2b">Return to Ulaanbaatar</div>
+          <ul class="sb-ul"><li>Breakfast</li><li>Drive back to Ulaanbaatar</li><li>Arrive in the evening</li><li>Apartment stay</li><li>Apartment available for July 11 to 15 and noted as better than hotel</li></ul>
+        </div>
+        
+    </div>
+    
+    <div class="sb-seg">
+      <div class="sb-seg-title" style="color:#6a3fbf">NAADAM DAYS</div>
+      
+        <div class="sb-item">
+          <div class="sb-day">Day 6 · 2026-07-11</div>
+          <div class="sb-place" style="color:#6a3fbf">Naadam Festival Stadium</div>
+          <ul class="sb-ul"><li>Breakfast</li><li>Visit Naadam Festival Stadium</li><li>Lunch</li><li>Afternoon archery competition and ceremonial activities</li><li>Dinner</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 7 · 2026-07-12</div>
+          <div class="sb-place" style="color:#6a3fbf">Kuin Doloon Khudag (horse racing site)</div>
+          <ul class="sb-ul"><li>Breakfast</li><li>Drive about 50 km to Kuin Doloon Khudag</li><li>Watch horse racing</li><li>Lunch</li><li>Dinner</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 8 · 2026-07-13</div>
+          <div class="sb-place" style="color:#6a3fbf">Ulaanbaatar</div>
+          <ul class="sb-ul"><li>Short drive to meet archery man</li><li>Half-day archery experience</li><li>Afternoon Bogd King Museum</li><li>Evening traditional folk concert</li></ul>
+        </div>
+        
+    </div>
+    
+    <div class="sb-seg">
+      <div class="sb-seg-title" style="color:#1f7a4c">NORTH & NOMAD LIFE</div>
+      
+        <div class="sb-item">
+          <div class="sb-day">Day 9 · 2026-07-14</div>
+          <div class="sb-place" style="color:#1f7a4c">Khustai National Park → Elsen Tasarkhai (Mini Gobi)</div>
+          <ul class="sb-ul"><li>Drive to Khustai National Park</li><li>See Przewalski’s wild horses</li><li>Continue to Elsen Tasarkhai / Mini Gobi</li><li>Lunch</li><li>Camel riding (about 30 minutes)</li><li>Climb sand dunes</li><li>Watch sunset</li><li>Dinner</li><li>Stargazing</li><li>Overnight in tent (your own tent)</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 10 · 2026-07-15</div>
+          <div class="sb-place" style="color:#1f7a4c">Orkhon Valley (Khotont county)</div>
+          <ul class="sb-ul"><li>Drive to Orkhon Valley</li><li>Visit nomad family</li><li>Settle in a yurt (your own ger)</li><li>Nomad life experience</li><li>Evening hike to the mountain</li><li>Photo taking</li><li>Nomad dinner</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 11 · 2026-07-16</div>
+          <div class="sb-place" style="color:#1f7a4c">Orkhon Valley</div>
+          <ul class="sb-ul"><li>Nomad life experience</li><li>Horse riding</li><li>Possibly yak riding too 😊</li><li>Nomad breakfast, lunch and dinner</li><li>Stay in a yurt (your own ger)</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 12 · 2026-07-17</div>
+          <div class="sb-place" style="color:#1f7a4c">Great White Lake near Khorgo</div>
+          <ul class="sb-ul"><li>Start driving toward Northern Mongolia</li><li>Drive about 6 hours</li><li>Find a camping spot at the Great White Lake near the volcano</li><li>Stay in tent</li><li>Cook own meal</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 13 · 2026-07-18</div>
+          <div class="sb-place" style="color:#1f7a4c">Shine Ider county, Khövsgöl province</div>
+          <ul class="sb-ul"><li>Breakfast</li><li>Drive to Shine Ider county</li><li>Very beautiful mountain and forest drive</li><li>Stay in tent</li><li>Cook own meal</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 14 · 2026-07-19</div>
+          <div class="sb-place" style="color:#1f7a4c">Khövsgöl Lake guesthouse</div>
+          <ul class="sb-ul"><li>Drive to Khövsgöl Lake</li><li>Stop at province center for grocery and water</li><li>Stay at cozy guesthouse</li><li>Guesthouse is a good place to meet travelers from different countries and share experiences</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 15 · 2026-07-20</div>
+          <div class="sb-place" style="color:#1f7a4c">Khövsgöl Lake → Reindeer tribe → same guesthouse</div>
+          <ul class="sb-ul"><li>Visit Khövsgöl Lake</li><li>Boat riding</li><li>Lunch</li><li>Short drive to visit reindeer tribe</li><li>Possibly ride reindeer if they are not tired</li><li>Dinner</li><li>Stay one more night at the same guesthouse</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 16 · 2026-07-21</div>
+          <div class="sb-place" style="color:#1f7a4c">Bulgan province nomad family</div>
+          <ul class="sb-ul"><li>Drive to Bulgan province</li><li>Horse riding</li><li>Drink mare’s milk (airag)</li><li>Camp in a tent if weather is nice</li><li>Otherwise rent a ger</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 17 · 2026-07-22</div>
+          <div class="sb-place" style="color:#1f7a4c">Bulgan province</div>
+          <ul class="sb-ul"><li>Rest and nomad life experience</li><li>Try to find archery man and crafting people in the county</li><li>Possible teaching / demonstration of their experience</li><li>Stay in a tent or ger</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 18 · 2026-07-23</div>
+          <div class="sb-place" style="color:#1f7a4c">Erdenet</div>
+          <ul class="sb-ul"><li>Drive to Erdenet city</li><li>Explore the second biggest city of Mongolia</li><li>Maybe find a place to shower and wash clothes</li><li>Visit local Naadam around there (schedule not out yet, but likely to find one)</li><li>Camping in a tent</li></ul>
+        </div>
+        
+    </div>
+    
+    <div class="sb-seg">
+      <div class="sb-seg-title" style="color:#2c7fb8">FINAL UB DAYS</div>
+      
+        <div class="sb-item">
+          <div class="sb-day">Day 19 · 2026-07-24</div>
+          <div class="sb-place" style="color:#2c7fb8">Return to Ulaanbaatar</div>
+          <ul class="sb-ul"><li>Drive to Ulaanbaatar</li><li>Stop at Urikhan for lunch</li><li>Settle in your apartment</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 20 · 2026-07-25</div>
+          <div class="sb-place" style="color:#2c7fb8">Ulaanbaatar city tour</div>
+          <ul class="sb-ul"><li>City tour: National Museum</li><li>Gandan Monastery</li><li>Zaisan Monument</li><li>Dinner</li><li>“Good bye” dinner because the guide will prepare car and self for the next trip leaving on 28 July</li></ul>
+        </div>
+        
+        <div class="sb-item">
+          <div class="sb-day">Day 21 · 2026-07-26</div>
+          <div class="sb-place" style="color:#2c7fb8">Chinggis Horse Statue → Terelj National Park → UB</div>
+          <ul class="sb-ul"><li>Drive to Chinggis Horse Statue (about 65 km)</li><li>Hike to the statue</li><li>Eagle handling and photo</li><li>Lunch</li><li>Drive to Terelj National Park</li><li>Visit Turtle Rock</li><li>Walk to Ariyabal Meditation Temple for hiking and photography</li><li>Stargazing at night</li><li>Drive back to UB and settle in apartment</li><li>“Good bye” dinner</li><li>Apartment could be extended until departure (6 days × $50 = $250)</li></ul>
+        </div>
+        
+    </div>
+    
+  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:16px 0;">
+  <div class="sb-total">Total Distance ≈ 2,994 km</div>
+  <div class="sb-note">Approximate straight-line total between daily plotted points.</div>
 </div>
 
+<div id="map"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const map = L.map("map_mongolia", {
-  center: [47.5, 103.5],
-  zoom: 5,
-  zoomControl: true
-});
-
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 18,
-  attribution: 'Data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+var map = L.map('map', { center:[47.8, 103.5], zoom:5 });
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:'Data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// base route (gray)
-const allLine = [[47.92123, 106.918556], [48.1502, 107.576], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556], [47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [49.4747, 105.0843], [47.92123, 106.918556], [47.8408, 106.77]];
-L.polyline(allLine, {
-  color:"#444444", weight:4, opacity:0.55
-}).addTo(map);
+var route = [[47.92123, 106.91856], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.91856], [47.9139, 106.9146], [47.913, 107.12], [47.92123, 106.91856], [47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [47.92123, 106.91856], [47.92123, 106.91856], [48.1502, 107.576]];
+L.polyline(route, { color:'#555555', weight:4, opacity:0.55 }).addTo(map);
+L.polyline([[47.92123, 106.91856], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.91856]], {color:'#d95f2b', weight:6, opacity:0.9}).addTo(map);L.polyline([[47.9139, 106.9146], [47.913, 107.12], [47.92123, 106.91856]], {color:'#6a3fbf', weight:6, opacity:0.9}).addTo(map);L.polyline([[47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083]], {color:'#1f7a4c', weight:6, opacity:0.9}).addTo(map);L.polyline([[47.92123, 106.91856], [47.92123, 106.91856], [48.1502, 107.576]], {color:'#2c7fb8', weight:6, opacity:0.9}).addTo(map);
 
-// segment highlights
-L.polyline([[47.92123, 106.918556], [48.1502, 107.576], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.918556]], { color:"#d94f2b", weight:6, opacity:0.9 }).addTo(map);
-L.polyline([[47.92123, 106.918556], [47.92123, 106.918556], [47.92123, 106.918556]], { color:"#6a3fbf", weight:6, opacity:0.9 }).addTo(map);
-L.polyline([[47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [49.4747, 105.0843], [47.92123, 106.918556], [47.8408, 106.77]], { color:"#1f7a4c", weight:6, opacity:0.9 }).addTo(map);
-
-// markers
-
-(function(){
-  const m = L.marker([47.921230, 106.918556]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">1</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 1.0</span>\n    <span class=\"day-date\">2026-07-07</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Arrival (noon time?) \u2192 transfer to hotel, check-in</li><li>City tour: National Museum \u00b7 Gandan Monastery \u00b7 Zaisan Monument</li><li>Welcome dinner + talk about upcoming trip &amp; details</li><li>Overnight: hotel</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 1", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([48.150200, 107.576000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">2</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 2.0</span>\n    <span class=\"day-date\">2026-07-08</span>\n  </div>\n  <div class=\"day-place\">Chinggis Horse Statue \u2192 Terelj National Park</div>\n  <ul class=\"card-ul\"><li>Drive to Chinggis Horse Statue (\u224865 km) + hike up to the statue</li><li>Eagle handling &amp; photos</li><li>Lunch</li><li>Drive to Terelj NP \u2192 settle into tourist yurt camp (your own ger)</li><li>Afternoon: Turtle Rock \u00b7 Ariyabal Meditation Temple walk/hike + photography</li><li>Night: stargazing</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 2", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([46.198580, 106.030660]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">3</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 3.0</span>\n    <span class=\"day-date\">2026-07-09</span>\n  </div>\n  <div class=\"day-place\">Baga Gazriin Chuluu (Middle Gobi)</div>\n  <ul class=\"card-ul\"><li>Drive to Baga Gazriin Chuluu (arrive ~2 pm; lunch on the way)</li><li>Settle in cozy nomad camp (private ger if possible; high season may share with other female travelers)</li><li>Hike &amp; photography among rock formations (possible wildlife sighting)</li><li>Evening: Mongolian cuisine dinner</li><li>Night: stargazing + night photos</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 3", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([43.495899, 104.082542]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">4</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 4.0</span>\n    <span class=\"day-date\">2026-07-10</span>\n  </div>\n  <div class=\"day-place\">Tsagaan Suvarga \u2192 Yol Valley</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Tsagaan Suvarga \u2192 visit for a couple of hours</li><li>Lunch</li><li>Continue drive to Yol Valley (~5 hours) \u2192 arrive evening</li><li>Settle in cozy yurt camp (private ger if possible; high season may share with other female travelers)</li><li>Optional: hand-making / crafting experience with camp host</li><li>Dinner</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 4", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([43.733300, 102.333000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">5</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 5.0</span>\n    <span class=\"day-date\">2026-07-11</span>\n  </div>\n  <div class=\"day-place\">Yol Valley \u2192 Moltsog Sand Dunes</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Short drive to Yol Valley \u2192 hike + short horse riding</li><li>Drive to Moltsog sand dunes</li><li>Afternoon: camel riding</li><li>Evening: dune hike + photos</li><li>Overnight: tent camping</li><li>Early morning option: sunrise photo/video in the Gobi (weather permitting)</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 5", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.942443, 106.939769]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#d94f2b\">6</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#d94f2b\">Day 6.0</span>\n    <span class=\"day-date\">2026-07-12</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive back to Ulaanbaatar \u2192 arrive evening</li><li>Stay: apartment (July 12\u201316) \u2014 much better than hotel</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 6", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.921230, 106.948556]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#6a3fbf\">7</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 7.0</span>\n    <span class=\"day-date\">2026-07-13</span>\n  </div>\n  <div class=\"day-place\">Naadam Festival (Ulaanbaatar)</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Naadam site</li><li>Festival events: horse racing \u00b7 wrestling \u00b7 other activities</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 7", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.900017, 106.939769]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#6a3fbf\">8</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 8.0</span>\n    <span class=\"day-date\">2026-07-14</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Relax day</li><li>Rest + recover (we\u2019ll be tired by this point)</li><li>Shopping + preparation for the next destination</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 8", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.891230, 106.918556]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#6a3fbf\">9</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 9.0</span>\n    <span class=\"day-date\">2026-07-15</span>\n  </div>\n  <div class=\"day-place\">Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Short drive to meet archery man \u2192 archery experience (half day)</li><li>Afternoon: Bogd King Museum</li><li>Evening: concert</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 9", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.332100, 103.683100]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">10</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 10.0</span>\n    <span class=\"day-date\">2026-07-16</span>\n  </div>\n  <div class=\"day-place\">Khustai NP \u2192 Elsen Tasarkhai (Mini Gobi)</div>\n  <ul class=\"card-ul\"><li>Drive to Khustai National Park \u2192 Przewalski\u2019s (wild) horses</li><li>Continue to Elsen Tasarkhai (Mini Gobi) \u00b7 Lunch</li><li>Camel riding (~30 min)</li><li>Climb sand dunes \u2192 watch sunset</li><li>Dinner</li><li>Night: stargazing (clear desert sky)</li><li>Overnight: tent (your own tent)</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 10", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.554000, 102.825500]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">11</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 11.0</span>\n    <span class=\"day-date\">2026-07-17</span>\n  </div>\n  <div class=\"day-place\">Orkhon Valley</div>\n  <ul class=\"card-ul\"><li>Drive to Orkhon Valley</li><li>Visit nomad family \u2192 settle in yurt (your own ger)</li><li>Nomad life experience</li><li>Evening: hike to mountain + photos</li><li>Dinner (nomad)</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 11", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.575213, 102.846713]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">12</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 12.0</span>\n    <span class=\"day-date\">2026-07-18</span>\n  </div>\n  <div class=\"day-place\">Orkhon Valley</div>\n  <ul class=\"card-ul\"><li>Nomad life experience (full day)</li><li>Extensive horse riding (possibly yak riding too \ud83d\ude0a)</li><li>Nomad breakfast \u00b7 lunch \u00b7 dinner</li><li>Overnight: yurt (your own ger)</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 12", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([48.169200, 99.720000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">13</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 13.0</span>\n    <span class=\"day-date\">2026-07-19</span>\n  </div>\n  <div class=\"day-place\">Great White Lake (Khorgo area)</div>\n  <ul class=\"card-ul\"><li>Start driving toward Northern Mongolia (~6 hours)</li><li>Camp at Great White Lake near the volcano (Khorgo)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 13", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([48.942200, 99.534000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">14</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 14.0</span>\n    <span class=\"day-date\">2026-07-20</span>\n  </div>\n  <div class=\"day-place\">Shine Ider (Kh\u00f6vsg\u00f6l Province)</div>\n  <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Shine Ider county (scenic mountain + forest area)</li><li>Cook our own meal</li><li>Overnight: tent</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 14", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([50.437000, 100.157000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">15</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 15.0</span>\n    <span class=\"day-date\">2026-07-21</span>\n  </div>\n  <div class=\"day-place\">Lake Kh\u00f6vsg\u00f6l</div>\n  <ul class=\"card-ul\"><li>Drive to Lake Kh\u00f6vsg\u00f6l</li><li>Stop at province center for groceries / water</li><li>Stay at cozy guesthouse</li><li>Good chance to meet &amp; chat with travelers from other countries</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 15", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([51.352700, 99.352000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">16</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 16.0</span>\n    <span class=\"day-date\">2026-07-22</span>\n  </div>\n  <div class=\"day-place\">Lake Kh\u00f6vsg\u00f6l \u2192 Reindeer Tribe</div>\n  <ul class=\"card-ul\"><li>Visit Lake Kh\u00f6vsg\u00f6l + boat riding</li><li>Lunch</li><li>Afternoon: short drive to reindeer tribe for a visit (possible reindeer ride if they\u2019re not tired)</li><li>Note: July can be tough for reindeer (they prefer extreme cold)</li><li>Dinner</li><li>Overnight: same guesthouse (2nd night)</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 16", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([48.807200, 103.533500]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">17</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 17.0</span>\n    <span class=\"day-date\">2026-07-23</span>\n  </div>\n  <div class=\"day-place\">Bulgan Province (Nomad family)</div>\n  <ul class=\"card-ul\"><li>Drive to Bulgan province</li><li>Nomad family visit \u2192 horse riding</li><li>Airag (mare\u2019s milk) tasting</li><li>Overnight: tent if weather is nice; otherwise rent a ger</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 17", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([48.828413, 103.554713]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">18</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 18.0</span>\n    <span class=\"day-date\">2026-07-24</span>\n  </div>\n  <div class=\"day-place\">Bulgan Province</div>\n  <ul class=\"card-ul\"><li>Rest day + nomad life experience</li><li>Try to arrange archery man + crafting people to teach/show local skills</li><li>Overnight: tent or ger</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 18", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([49.033300, 104.083000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">19</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 19.0</span>\n    <span class=\"day-date\">2026-07-25</span>\n  </div>\n  <div class=\"day-place\">Erdenet</div>\n  <ul class=\"card-ul\"><li>Drive to Erdenet \u2192 explore (Mongolia\u2019s 2nd biggest city)</li><li>Find a place to shower + wash clothes (if possible)</li><li>Visit a local Naadam around there (schedule not out yet)</li><li>This day is an adventure day \u2014 trust me, we\u2019ll figure it out \ud83d\ude0a</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 19", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([49.474700, 105.084300]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">20</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 20.0</span>\n    <span class=\"day-date\">2026-07-26</span>\n  </div>\n  <div class=\"day-place\">Amarbayasgalant Monastery</div>\n  <ul class=\"card-ul\"><li>Drive to Amarbayasgalant Monastery (famous, rich history)</li><li>Visit monastery site</li><li>Overnight: tent camping</li><li>Cook our own meal</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 20", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.900017, 106.897343]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">21</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 21.0</span>\n    <span class=\"day-date\">2026-07-27</span>\n  </div>\n  <div class=\"day-place\">Return to Ulaanbaatar</div>\n  <ul class=\"card-ul\"><li>Drive back to Ulaanbaatar</li><li>Stops at small counties + restaurants/coffee shops on the way</li><li>Overnight: hotel</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 21", { sticky:true });
-})();
-
-(function(){
-  const m = L.marker([47.840800, 106.770000]).addTo(map);
-  const icon = L.divIcon({ className:"empty", html: "<div class=\"day-badge\" style=\"background:#1f7a4c\">22</div>" });
-  m.setIcon(icon);
-  m.bindPopup("<div class=\"day-card\">\n  <div class=\"day-card-top\">\n    <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 22.0</span>\n    <span class=\"day-date\">2026-07-28</span>\n  </div>\n  <div class=\"day-place\">Departure (Airport transfer)</div>\n  <ul class=\"card-ul\"><li>Pick-up</li><li>Transfer to the airport \ud83d\ude0a</li></ul>\n</div>", { maxWidth: 420 });
-  m.bindTooltip("Day 22", { sticky:true });
-})();
-
-// fit bounds
-map.fitBounds(allLine);
+    var marker_1 = L.marker([47.92123, 106.94856], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#d95f2b">1</div>'
+      })
+    }).addTo(map);
+    marker_1.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#d95f2b\">Day 1</span>        <span class=\"day-date\">2026-07-06</span>      </div>      <div class=\"day-place\">Arrival \u2192 Ulaanbaatar apartment</div>      <ul class=\"card-ul\"><li>Arrival at 16:45</li><li>Drive to UB (about 50 km)</li><li>Settle in at the apartment</li><li>Dinner at the apartment</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_2 = L.marker([46.19858, 106.03066], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#d95f2b">2</div>'
+      })
+    }).addTo(map);
+    marker_2.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#d95f2b\">Day 2</span>        <span class=\"day-date\">2026-07-07</span>      </div>      <div class=\"day-place\">Baga Gazriin Chuluu</div>      <ul class=\"card-ul\"><li>Drive to Middle Gobi</li><li>Lunch on the way</li><li>Arrive around 2 pm and settle in a cozy nomad camp</li><li>Private ger will be attempted, but high season may mean sharing with other female travelers</li><li>Hike and photograph rock formations, possibly see wild ibex</li><li>Evening Mongolian dinner</li><li>Stargazing and night photography</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_3 = L.marker([43.495899, 104.082542], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#d95f2b">3</div>'
+      })
+    }).addTo(map);
+    marker_3.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#d95f2b\">Day 3</span>        <span class=\"day-date\">2026-07-08</span>      </div>      <div class=\"day-place\">Tsagaan Suvarga \u2192 Yol Valley</div>      <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Tsagaan Suvarga for a couple of hours</li><li>Lunch</li><li>Continue to Yol Valley (about 5 hours)</li><li>Settle in cozy yurt camp</li><li>Private ger will be attempted, but sharing may be necessary in high season</li><li>Possible hand-making / crafting experience</li><li>Dinner</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_4 = L.marker([43.7333, 102.333], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#d95f2b">4</div>'
+      })
+    }).addTo(map);
+    marker_4.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#d95f2b\">Day 4</span>        <span class=\"day-date\">2026-07-09</span>      </div>      <div class=\"day-place\">Yol Valley \u2192 Moltsog Sand Dunes \u2192 Flaming Cliff</div>      <ul class=\"card-ul\"><li>Breakfast</li><li>Short drive to Yol Valley</li><li>Hike and short horse riding</li><li>Drive to Moltsog Sand Dunes and Flaming Cliff</li><li>Camel riding in the afternoon</li><li>Evening dune hike and photo taking</li><li>Camp in a tent</li><li>Wake up very early next morning for sunrise photo/video in the Gobi Desert if the sky is clear</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_5 = L.marker([47.94976169548885, 106.92783050983125], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#d95f2b">5</div>'
+      })
+    }).addTo(map);
+    marker_5.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#d95f2b\">Day 5</span>        <span class=\"day-date\">2026-07-10</span>      </div>      <div class=\"day-place\">Return to Ulaanbaatar</div>      <ul class=\"card-ul\"><li>Breakfast</li><li>Drive back to Ulaanbaatar</li><li>Arrive in the evening</li><li>Apartment stay</li><li>Apartment available for July 11 to 15 and noted as better than hotel</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_6 = L.marker([47.9139, 106.9146], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#6a3fbf">6</div>'
+      })
+    }).addTo(map);
+    marker_6.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 6</span>        <span class=\"day-date\">2026-07-11</span>      </div>      <div class=\"day-place\">Naadam Festival Stadium</div>      <ul class=\"card-ul\"><li>Breakfast</li><li>Visit Naadam Festival Stadium</li><li>Lunch</li><li>Afternoon archery competition and ceremonial activities</li><li>Dinner</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_7 = L.marker([47.913, 107.12], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#6a3fbf">7</div>'
+      })
+    }).addTo(map);
+    marker_7.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 7</span>        <span class=\"day-date\">2026-07-12</span>      </div>      <div class=\"day-place\">Kuin Doloon Khudag (horse racing site)</div>      <ul class=\"card-ul\"><li>Breakfast</li><li>Drive about 50 km to Kuin Doloon Khudag</li><li>Watch horse racing</li><li>Lunch</li><li>Dinner</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_8 = L.marker([47.93886355756877, 106.89428949016875], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#6a3fbf">8</div>'
+      })
+    }).addTo(map);
+    marker_8.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#6a3fbf\">Day 8</span>        <span class=\"day-date\">2026-07-13</span>      </div>      <div class=\"day-place\">Ulaanbaatar</div>      <ul class=\"card-ul\"><li>Short drive to meet archery man</li><li>Half-day archery experience</li><li>Afternoon Bogd King Museum</li><li>Evening traditional folk concert</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_9 = L.marker([47.3321, 103.6831], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">9</div>'
+      })
+    }).addTo(map);
+    marker_9.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 9</span>        <span class=\"day-date\">2026-07-14</span>      </div>      <div class=\"day-place\">Khustai National Park \u2192 Elsen Tasarkhai (Mini Gobi)</div>      <ul class=\"card-ul\"><li>Drive to Khustai National Park</li><li>See Przewalski\u2019s wild horses</li><li>Continue to Elsen Tasarkhai / Mini Gobi</li><li>Lunch</li><li>Camel riding (about 30 minutes)</li><li>Climb sand dunes</li><li>Watch sunset</li><li>Dinner</li><li>Stargazing</li><li>Overnight in tent (your own tent)</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_10 = L.marker([47.554, 102.8555], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">10</div>'
+      })
+    }).addTo(map);
+    marker_10.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 10</span>        <span class=\"day-date\">2026-07-15</span>      </div>      <div class=\"day-place\">Orkhon Valley (Khotont county)</div>      <ul class=\"card-ul\"><li>Drive to Orkhon Valley</li><li>Visit nomad family</li><li>Settle in a yurt (your own ger)</li><li>Nomad life experience</li><li>Evening hike to the mountain</li><li>Photo taking</li><li>Nomad dinner</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_11 = L.marker([47.554, 102.7955], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">11</div>'
+      })
+    }).addTo(map);
+    marker_11.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 11</span>        <span class=\"day-date\">2026-07-16</span>      </div>      <div class=\"day-place\">Orkhon Valley</div>      <ul class=\"card-ul\"><li>Nomad life experience</li><li>Horse riding</li><li>Possibly yak riding too \ud83d\ude0a</li><li>Nomad breakfast, lunch and dinner</li><li>Stay in a yurt (your own ger)</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_12 = L.marker([48.1692, 99.72], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">12</div>'
+      })
+    }).addTo(map);
+    marker_12.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 12</span>        <span class=\"day-date\">2026-07-17</span>      </div>      <div class=\"day-place\">Great White Lake near Khorgo</div>      <ul class=\"card-ul\"><li>Start driving toward Northern Mongolia</li><li>Drive about 6 hours</li><li>Find a camping spot at the Great White Lake near the volcano</li><li>Stay in tent</li><li>Cook own meal</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_13 = L.marker([48.9422, 99.534], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">13</div>'
+      })
+    }).addTo(map);
+    marker_13.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 13</span>        <span class=\"day-date\">2026-07-18</span>      </div>      <div class=\"day-place\">Shine Ider county, Kh\u00f6vsg\u00f6l province</div>      <ul class=\"card-ul\"><li>Breakfast</li><li>Drive to Shine Ider county</li><li>Very beautiful mountain and forest drive</li><li>Stay in tent</li><li>Cook own meal</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_14 = L.marker([50.437, 100.157], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">14</div>'
+      })
+    }).addTo(map);
+    marker_14.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 14</span>        <span class=\"day-date\">2026-07-19</span>      </div>      <div class=\"day-place\">Kh\u00f6vsg\u00f6l Lake guesthouse</div>      <ul class=\"card-ul\"><li>Drive to Kh\u00f6vsg\u00f6l Lake</li><li>Stop at province center for grocery and water</li><li>Stay at cozy guesthouse</li><li>Guesthouse is a good place to meet travelers from different countries and share experiences</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_15 = L.marker([51.3527, 99.352], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">15</div>'
+      })
+    }).addTo(map);
+    marker_15.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 15</span>        <span class=\"day-date\">2026-07-20</span>      </div>      <div class=\"day-place\">Kh\u00f6vsg\u00f6l Lake \u2192 Reindeer tribe \u2192 same guesthouse</div>      <ul class=\"card-ul\"><li>Visit Kh\u00f6vsg\u00f6l Lake</li><li>Boat riding</li><li>Lunch</li><li>Short drive to visit reindeer tribe</li><li>Possibly ride reindeer if they are not tired</li><li>Dinner</li><li>Stay one more night at the same guesthouse</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_16 = L.marker([48.8072, 103.5635], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">16</div>'
+      })
+    }).addTo(map);
+    marker_16.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 16</span>        <span class=\"day-date\">2026-07-21</span>      </div>      <div class=\"day-place\">Bulgan province nomad family</div>      <ul class=\"card-ul\"><li>Drive to Bulgan province</li><li>Horse riding</li><li>Drink mare\u2019s milk (airag)</li><li>Camp in a tent if weather is nice</li><li>Otherwise rent a ger</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_17 = L.marker([48.8072, 103.5035], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">17</div>'
+      })
+    }).addTo(map);
+    marker_17.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 17</span>        <span class=\"day-date\">2026-07-22</span>      </div>      <div class=\"day-place\">Bulgan province</div>      <ul class=\"card-ul\"><li>Rest and nomad life experience</li><li>Try to find archery man and crafting people in the county</li><li>Possible teaching / demonstration of their experience</li><li>Stay in a tent or ger</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_18 = L.marker([49.0333, 104.083], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#1f7a4c">18</div>'
+      })
+    }).addTo(map);
+    marker_18.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#1f7a4c\">Day 18</span>        <span class=\"day-date\">2026-07-23</span>      </div>      <div class=\"day-place\">Erdenet</div>      <ul class=\"card-ul\"><li>Drive to Erdenet city</li><li>Explore the second biggest city of Mongolia</li><li>Maybe find a place to shower and wash clothes</li><li>Visit local Naadam around there (schedule not out yet, but likely to find one)</li><li>Camping in a tent</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_19 = L.marker([47.90359644243123, 106.89428949016875], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#2c7fb8">19</div>'
+      })
+    }).addTo(map);
+    marker_19.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#2c7fb8\">Day 19</span>        <span class=\"day-date\">2026-07-24</span>      </div>      <div class=\"day-place\">Return to Ulaanbaatar</div>      <ul class=\"card-ul\"><li>Drive to Ulaanbaatar</li><li>Stop at Urikhan for lunch</li><li>Settle in your apartment</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_20 = L.marker([47.89269830451115, 106.92783050983125], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#2c7fb8">20</div>'
+      })
+    }).addTo(map);
+    marker_20.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#2c7fb8\">Day 20</span>        <span class=\"day-date\">2026-07-25</span>      </div>      <div class=\"day-place\">Ulaanbaatar city tour</div>      <ul class=\"card-ul\"><li>City tour: National Museum</li><li>Gandan Monastery</li><li>Zaisan Monument</li><li>Dinner</li><li>\u201cGood bye\u201d dinner because the guide will prepare car and self for the next trip leaving on 28 July</li></ul>    </div>    ", {maxWidth: 420});
+    
+    var marker_21 = L.marker([48.1502, 107.576], {
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="day-badge" style="background:#2c7fb8">21</div>'
+      })
+    }).addTo(map);
+    marker_21.bindPopup("    <div class=\"day-card\">      <div class=\"day-card-top\">        <span class=\"day-pill\" style=\"background:#2c7fb8\">Day 21</span>        <span class=\"day-date\">2026-07-26</span>      </div>      <div class=\"day-place\">Chinggis Horse Statue \u2192 Terelj National Park \u2192 UB</div>      <ul class=\"card-ul\"><li>Drive to Chinggis Horse Statue (about 65 km)</li><li>Hike to the statue</li><li>Eagle handling and photo</li><li>Lunch</li><li>Drive to Terelj National Park</li><li>Visit Turtle Rock</li><li>Walk to Ariyabal Meditation Temple for hiking and photography</li><li>Stargazing at night</li><li>Drive back to UB and settle in apartment</li><li>\u201cGood bye\u201d dinner</li><li>Apartment could be extended until departure (6 days \u00d7 $50 = $250)</li></ul>    </div>    ", {maxWidth: 420});
+    
+map.fitBounds([[47.92123, 106.91856], [46.19858, 106.03066], [43.495899, 104.082542], [43.7333, 102.333], [47.92123, 106.91856], [47.9139, 106.9146], [47.913, 107.12], [47.92123, 106.91856], [47.3321, 103.6831], [47.554, 102.8255], [47.554, 102.8255], [48.1692, 99.72], [48.9422, 99.534], [50.437, 100.157], [51.3527, 99.352], [48.8072, 103.5335], [48.8072, 103.5335], [49.0333, 104.083], [47.92123, 106.91856], [47.92123, 106.91856], [48.1502, 107.576]]);
 </script>
 </body>
 </html>
